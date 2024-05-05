@@ -1,35 +1,112 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="bg-zinc-900 text-white min-h-screen">
+      <nav className="flex justify-between items-center p-4">
+        <h1 className="text-2xl font-bold">Sports News Dashboard</h1>
+        <div>
+          <button className="bg-zinc-800 text-white px-4 py-2 rounded-lg mr-4">
+            Sign In
+          </button>
+          <button className="bg-zinc-800 text-white px-4 py-2 rounded-lg">
+            Sign Up
+          </button>
+        </div>
+      </nav>
+
+      <section className="p-4">
+        <h2 className="text-xl font-bold mb-4">Live Scores</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="bg-zinc-800 p-4 rounded-lg">
+            <h3 className="text-lg font-bold">Team A vs Team B</h3>
+            <p>Current Score: 2-1</p>
+            <p>Match Details: Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-bold my-4">Trending News</h2>
+        <div>
+          <ul className="flex space-x-4">
+            <li className="cursor-pointer">All Sports</li>
+            <li className="cursor-pointer">Football</li>
+            <li className="cursor-pointer">Basketball</li>
+          </ul>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-zinc-800 p-4 rounded-lg">
+              <img
+                src="https://placehold.co/150"
+                alt="News Thumbnail"
+                className="mb-2"
+              />
+              <h3 className="text-lg font-bold">News Title</h3>
+              <p>News Summary: Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="p-4">
+        <h2 className="text-xl font-bold mb-4">Filter News Articles</h2>
+        <select className="bg-zinc-800 text-white p-2 rounded-lg">
+          <option value="all">All Sports</option>
+          <option value="football">Football</option>
+          <option value="basketball">Basketball</option>
+        </select>
+        <select className="bg-zinc-800 text-white p-2 rounded-lg ml-4">
+          <option value="all">All Teams</option>
+          <option value="team1">Team 1</option>
+          <option value="team2">Team 2</option>
+        </select>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
+          <div className="bg-zinc-800 p-4 rounded-lg">
+            <img
+              src="https://placehold.co/150"
+              alt="News Thumbnail"
+              className="mb-2"
+            />
+            <h3 className="text-lg font-bold">Filtered News Title</h3>
+            <p>News Summary: Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="p-4">
+        <h2 className="text-xl font-bold mb-4">Sign In / Sign Up</h2>
+      </section>
+
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center hidden">
+        <div className="bg-zinc-800 p-4 rounded-lg">
+          <img
+            src="https://placehold.co/300"
+            alt="News Thumbnail"
+            className="mb-2"
+          />
+          <h3 className="text-xl font-bold">Detailed News Title</h3>
+          <p>Detailed News Content: Lorem ipsum dolor sit amet</p>
+          <button className="bg-zinc-700 text-white px-4 py-2 rounded-lg mt-4">
+            Close
+          </button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center hidden">
+        <div className="bg-zinc-800 p-4 rounded-lg">
+          <h2 className="text-xl font-bold mb-4">Preferences</h2>
+          <p>Select your preferred sports and teams</p>
+
+          <button className="bg-zinc-700 text-white px-4 py-2 rounded-lg mt-4">
+            Save Preferences
+          </button>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
