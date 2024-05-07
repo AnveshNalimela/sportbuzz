@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
 export default function ProtectedRoute({
@@ -11,5 +12,5 @@ export default function ProtectedRoute({
   if (authenticated) {
     return <>{children}</>;
   }
-  return <Navigate to="/signin" replace state={{ referrer: pathname }} />;
+  return <Navigate to="/home" replace state={{ referrer: pathname }} />;
 }

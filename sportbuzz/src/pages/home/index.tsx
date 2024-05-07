@@ -1,32 +1,12 @@
 import React from "react";
-import icon from "../../assets/images/icon.png";
+import Header from "./Header";
 const Home = () => {
   return (
     <div>
       <div className="bg-white  min-h-screen">
-        <nav className="flex justify-between items-center p-4 bg-cyan-500">
-          <img src={icon} alt="Logo" className="w-12 h-12" />
-          <h1 className="text-4xl font-bold text-white">SportsBuzz</h1>
-          <div>
-            <button className="bg-blue-700 text-white px-4 py-2 rounded-lg mr-4">
-              Sign In
-            </button>
-            <button className="bg-zinc-800 text-white px-4 py-2 rounded-lg">
-              Sign Up
-            </button>
-          </div>
-        </nav>
+        <Header />
 
         <section className="p-4">
-          <h2 className="text-xl font-bold mb-4">Live Scores</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-zinc-800 p-4 rounded-lg">
-              <h3 className="text-lg font-bold">Team A vs Team B</h3>
-              <p>Current Score: 2-1</p>
-              <p>Match Details: Lorem ipsum dolor sit amet</p>
-            </div>
-          </div>
-
           <h2 className="text-xl font-bold my-4">Trending News</h2>
           <div>
             <ul className="flex space-x-4">
