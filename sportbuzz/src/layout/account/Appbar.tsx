@@ -6,8 +6,8 @@ import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 
 const userNavigation = [
-  { name: "Login", href: "/signin" },
-  { name: "Register", href: "/signup" },
+  { name: "Profile", href: "#" },
+  { name: "Sign out", href: "/logout" },
 ];
 
 const classNames = (...classes: string[]): string =>
@@ -36,7 +36,7 @@ const Appbar = () => {
   return (
     <>
       <Disclosure as="nav" className="border-b border-slate-200">
-        {({ open }) => (
+        {({}) => (
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">

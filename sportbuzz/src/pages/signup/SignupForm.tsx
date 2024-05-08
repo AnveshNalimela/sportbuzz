@@ -24,9 +24,9 @@ const SignupForm: React.FC = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: userName,
-          email: userEmail,
-          password: userPassword,
+          name,
+          email,
+          password,
         }),
       });
 
@@ -54,10 +54,10 @@ const SignupForm: React.FC = () => {
           </label>
           <input
             type="text"
-            id="userName"
-            {...register("userName", { required: true })}
+            id="name"
+            {...register("name", { required: true })}
             className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
-              errors.userName ? "border-red-500" : ""
+              errors.name ? "border-red-500" : ""
             }`}
           />
         </div>
@@ -67,10 +67,10 @@ const SignupForm: React.FC = () => {
           </label>
           <input
             type="email"
-            id="userEmail"
-            {...register("userEmail", { required: true })}
+            id="email"
+            {...register("email", { required: true })}
             className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
-              errors.userEmail ? "border-red-500" : ""
+              errors.email ? "border-red-500" : ""
             }`}
           />
         </div>
@@ -80,10 +80,10 @@ const SignupForm: React.FC = () => {
           </label>
           <input
             type="password"
-            id="userPassword"
-            {...register("userPassword", { required: true })}
+            id="password"
+            {...register("password", { required: true })}
             className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
-              errors.userPassword ? "border-red-500" : ""
+              errors.password ? "border-red-500" : ""
             }`}
           />
         </div>
