@@ -45,7 +45,7 @@ export const reducer = (
         isError: true,
         errorMessage: action.payload,
       };
-   
+
     default:
       return state;
   }
