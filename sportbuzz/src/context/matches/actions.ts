@@ -9,16 +9,16 @@ export const fetchMatches = async (dispatch: any) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
+    console.log(data);
     dispatch({ type: "FETCH_MATCHES_SUCCESS", payload: data });
   } catch (error) {
-    console.log("Error fetching projects:", error);
+    console.log("Error fetching matches:", error);
     dispatch({
-      type: "FETCH_PROJECTS_FAILURE",
-      payload: "Unable to load projects",
+      type: "FETCH_MATCHES_FAILURE",
+      payload: "Unable to load  matches",
     });
   }
 };

@@ -1,6 +1,11 @@
 interface Match {
   id: number;
-  description: string;
+  name: string;
+  location: string;
+  sportName: string;
+  endsAt: string;
+  isRunning: boolean;
+  teams: { id: number; name: string }[];
 }
 
 // Define the initial state
@@ -24,7 +29,7 @@ export type MatchesActions =
 
 export const reducer = (
   state: MatchesState = initialState,
-  action: MatchesState
+  action: MatchesActions
 ): MatchesState => {
   switch (action.type) {
     case "FETCH_MATCHES_REQUEST":
