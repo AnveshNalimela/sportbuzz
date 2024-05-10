@@ -1,10 +1,16 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import AccountLayout from "../layout/account";
 import HomeLayout from "../layout/home";
-import Matches from "../pages/home";
+import Articles from "../pages/Articles";
+import Home from "../pages/home";
 import Container from "../pages/home/Container";
-import MatchDetails from "../pages/match_details";
+import Logout from "../pages/logout";
+
 import Signin from "../pages/signin";
+import Signup from "../pages/signup";
+import ProtectedRoute from "./ProtectedRoute";
+import Match from "../pages/match";
 
 const router = createBrowserRouter([
   {
@@ -17,27 +23,42 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Signin />,
+    element: <Signup />,
+  },
+  {
+    path: "/logout",
+    element: <Logout />,
   },
 
   {
     path: "/home",
     element: <HomeLayout />,
     children: [
-      { index: true, element: <Navigate to="/home/matches" replace /> },
+      { index: true, element: <Navigate to="/home/index" replace /> },
       {
-        path: "matches",
+        path: "index",
         element: <Container />,
         children: [
-          { index: true, element: <Matches /> },
+          { index: true, element: <Home /> },
           {
-            path: ":matchID",
-            element: <MatchDetails />,
-            children: [{ index: true, element: <></> }],
+            path: "matches/:matchID",
+            element: <Match />,
+          },
+          {
+            path: "articles/:articleID",
+            element: <Articles />,
           },
         ],
       },
     ],
+  },
+  {
+    path: "/account",
+    element: (
+      <ProtectedRoute>
+        <AccountLayout />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

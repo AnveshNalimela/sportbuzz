@@ -4,7 +4,7 @@ import ArticlesList from "./articles/ArticlesList";
 import Favourites from "./favourites";
 import MatchList from "./matches/MatchList";
 
-const Matches = () => {
+const Home = () => {
   return (
     <>
       <div className="flex justify-between">
@@ -26,4 +26,4 @@ const Matches = () => {
   );
 };
 
-export default Matches;
+export default Home;

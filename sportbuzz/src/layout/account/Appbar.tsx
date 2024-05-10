@@ -40,8 +40,9 @@ const Appbar = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <img className="h-8" src={Logo} alt="Smarter Tasks" />
+                <div className="flex inline-block">
+                  <img className="h-10" src={Logo} alt="SportBuzz" />
+                  <h2 className="text-3xl font-bold ml-2">SportBuzz</h2>
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">

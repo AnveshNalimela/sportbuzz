@@ -5,8 +5,7 @@ import { useMatchesState } from "../../../context/matches/context";
 export default function ProjectListItems() {
   const state = useMatchesState();
   const { matches, isLoading, isError, errorMessage } = state;
-  const matchesList = matches.matches;
-  console.log(matchesList);
+
   // Check if matches is undefined or null
   if (matches === undefined || matches === null) {
     return <span>Loading...</span>;
@@ -24,11 +23,11 @@ export default function ProjectListItems() {
 
   return (
     <>
-      {matchesList
-        ?.slice(Math.max(matchesList.length - 5, 0))
+      {matches
+        ?.slice(Math.max(matches.length - 5, 0))
         .reverse()
         .map((match: any) => (
-          <Link key={match.id} to={`/${match.id}`}>
+          <Link key={match.id} to={`matches/${match.id}`}>
             <div className="match border-2 p-4 mx-2 rounded shadow h-full">
               <p className="text-xl font-bold text-center text-green-600">
                 {match.sportName}
