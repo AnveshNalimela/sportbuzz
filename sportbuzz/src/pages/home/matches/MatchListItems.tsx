@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMatchesState } from "../../context/matches/context";
+import { useMatchesState } from "../../../context/matches/context";
 
 export default function ProjectListItems() {
   const state = useMatchesState();
@@ -29,7 +29,7 @@ export default function ProjectListItems() {
         .reverse()
         .map((match: any) => (
           <Link key={match.id} to={`/${match.id}`}>
-            <div className="match border-2 p-4 mx-2 rounded shadow hover:scale(1.1)">
+            <div className="match border-2 p-4 mx-2 rounded shadow h-400">
               <p className="text-xl font-bold text-center text-green-600">
                 {match.sportName}
               </p>
