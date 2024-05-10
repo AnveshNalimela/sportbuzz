@@ -12,7 +12,7 @@ export const fetchMatches = async (dispatch: any) => {
       },
     });
     const data = await response.json();
-    console.log(data.matches);
+
     dispatch({ type: "FETCH_MATCHES_SUCCESS", payload: data.matches });
   } catch (error) {
     console.log("Error fetching matches:", error);

@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
 
 export default function ArticleListItems() {
   const state = useArticlesState();
   const { articles, isLoading, isError, errorMessage } = state;
   const articlesList = articles;
-  console.log(articlesList);
+
   // Check if matches is undefined or null
   if (articles === undefined || articles === null) {
     return <span>Loading...</span>;
@@ -50,9 +51,11 @@ export default function ArticleListItems() {
               <p className="text-zinc-600 text-sm dark:text-zinc-400 mt-1">
                 {article.summary}
               </p>
-              <button className="bg-blue-500 text-white p-2 rounded-lg mt-2">
-                Read more
-              </button>
+              <Link key={article.id} to={`articles/${article.id}`}>
+                <button className="bg-blue-500 text-white p-2 rounded-lg mt-2">
+                  Read more
+                </button>
+              </Link>
             </div>
           </div>
         ))}

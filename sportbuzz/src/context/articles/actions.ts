@@ -12,7 +12,7 @@ export const fetchArticles = async (dispatch: any) => {
       },
     });
     const data = await response.json();
-    console.log(data);
+
     dispatch({ type: "FETCH_ARTICLES_SUCCESS", payload: data });
   } catch (error) {
     console.log("Error fetching articles:", error);

@@ -9,13 +9,13 @@ const Home = () => {
     <>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold tracking-tight text-slate-700">
-          Trending Matches
+          Live Matches
         </h2>
       </div>
       <MatchList />
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold tracking-tight text-slate-700">
-          Articles
+          Trending Articles
         </h2>
       </div>
       <div className="flex">

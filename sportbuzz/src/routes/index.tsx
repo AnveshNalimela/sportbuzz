@@ -7,10 +7,11 @@ import Home from "../pages/home";
 import Container from "../pages/home/Container";
 import Logout from "../pages/logout";
 
+import { ArticleProvider } from "../context/article/context";
+import Match from "../pages/match";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import ProtectedRoute from "./ProtectedRoute";
-import Match from "../pages/match";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
           },
           {
             path: "articles/:articleID",
-            element: <Articles />,
+            element: (
+              <ArticleProvider>
+                <Articles />
+              </ArticleProvider>
+            ),
           },
         ],
       },
