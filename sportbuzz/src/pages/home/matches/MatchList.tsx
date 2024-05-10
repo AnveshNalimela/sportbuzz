@@ -3,7 +3,7 @@ import MatchListItems from "./MatchListItems";
 
 const ProjectList: React.FC = () => {
   return (
-    <div className="grid gap-4 grid-cols-5 mt-5">
+    <div className="h-400 grid gap-4 grid-cols-5 my-5">
       <MatchListItems />
     </div>
   );

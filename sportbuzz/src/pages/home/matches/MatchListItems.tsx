@@ -29,7 +29,7 @@ export default function ProjectListItems() {
         .reverse()
         .map((match: any) => (
           <Link key={match.id} to={`/${match.id}`}>
-            <div className="match border-2 p-4 mx-2 rounded shadow h-400">
+            <div className="match border-2 p-4 mx-2 rounded shadow h-full">
               <p className="text-xl font-bold text-center text-green-600">
                 {match.sportName}
               </p>
