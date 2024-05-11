@@ -29,8 +29,8 @@ const Appbar = () => {
   };
 
   const navigation = [
-    { name: "Scores", href: "/account/matches", current: false },
-    { name: "News", href: "/account/news", current: false },
+    { name: "Sports", href: "/home/sports", current: false },
+    { name: "Teams", href: "/home/teams", current: false },
   ];
 
   return (
