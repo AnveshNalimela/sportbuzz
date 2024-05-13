@@ -9,6 +9,7 @@ import Logout from "../pages/logout";
 
 import { ArticleProvider } from "../context/article/context";
 import { MatchProvider } from "../context/match/context";
+import Example from "../pages/Example";
 import Match from "../pages/match";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
         <AccountLayout />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/example",
+    element: <Example />,
   },
 ]);
 

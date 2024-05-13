@@ -1,7 +1,7 @@
 import React from "react";
 
+import { SportsProvider } from "../../context/sports/context";
 import ArticlesList from "./articles/ArticlesList";
-import Favourites from "./favourites";
 import MatchList from "./matches/MatchList";
 
 const Home = () => {
@@ -19,8 +19,9 @@ const Home = () => {
         </h2>
       </div>
       <div className="flex">
-        <ArticlesList />
-        <Favourites />
+       
+          <ArticlesList />
+       
       </div>
     </>
   );

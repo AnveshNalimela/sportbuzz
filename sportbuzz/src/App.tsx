@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { RouterProvider } from "react-router-dom";
 import { ArticlesProvider } from "./context/articles/context";
 import { MatchesProvider } from "./context/matches/context";
+import { SportsProvider } from "./context/sports/context";
 import { ThemeContext } from "./context/theme";
 import router from "./routes";
 
@@ -13,7 +14,9 @@ function App() {
     >
       <MatchesProvider>
         <ArticlesProvider>
-          <RouterProvider router={router} />
+          <SportsProvider>
+            <RouterProvider router={router} />
+          </SportsProvider>
         </ArticlesProvider>
       </MatchesProvider>
     </div>

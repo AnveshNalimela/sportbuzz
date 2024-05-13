@@ -1,11 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
+// In ArticleListBySport component:
 
-export default function ArticleListItems() {
+interface ArticleListBySportProps {
+  sportName: string;
+}
+
+const ArticleListBySport: React.FC<ArticleListBySportProps> = ({
+  sportName,
+}) => {
   const state = useArticlesState();
   const { articles, isLoading, isError, errorMessage } = state;
   const articlesList = articles;
+  const filteredArticles = articlesList.filter(
+    (article) => article.sport.name === sportName
+  );
 
   // Check if matches is undefined or null
   if (articles === undefined || articles === null) {
@@ -21,17 +31,20 @@ export default function ArticleListItems() {
   if (isError) {
     return <span>{errorMessage}</span>;
   }
- 
-
+  if (filteredArticles.length === 0) {
+    <h2 className="text-gray-500 font-semibold px-10 py-10 text-center">
+      No Articles Related to {sportName}
+    </h2>;
+  }
   return (
     <>
-      {articlesList
-        ?.slice(Math.max(articlesList.length - 5, 0))
+      {filteredArticles
+        ?.slice(Math.max(filteredArticles.length - 5, 0))
         .reverse()
         .map((article: any) => (
           <div
             key={article.id}
-            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex "
+            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex my-4"
           >
             <img
               src={article.thumbnail}
@@ -53,7 +66,7 @@ export default function ArticleListItems() {
                 {article.summary}
               </p>
               <Link key={article.id} to={`articles/${article.id}`}>
-                <button className="bg-blue-500 text-white p-2 rounded-lg mt-2">
+                <button className="bg-blue-500 text-white p-2 rounded-lg mt-1">
                   Read more
                 </button>
               </Link>
@@ -62,4 +75,6 @@ export default function ArticleListItems() {
         ))}
     </>
   );
-}
+};
+
+export default ArticleListBySport;
