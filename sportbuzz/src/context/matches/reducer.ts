@@ -25,8 +25,7 @@ export interface MatchesState {
 export type MatchesActions =
   | { type: "FETCH_MATCHES_REQUEST" }
   | { type: "FETCH_MATCHES_SUCCESS"; payload: Match[] }
-  | { type: "FETCH_MATCHES_FAILURE"; payload: string }
-
+  | { type: "FETCH_MATCHES_FAILURE"; payload: string };
 
 export const reducer = (
   state: MatchesState = initialState,

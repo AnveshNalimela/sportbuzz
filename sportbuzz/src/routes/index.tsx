@@ -9,6 +9,10 @@ import Logout from "../pages/logout";
 
 import { ArticleProvider } from "../context/article/context";
 import { MatchProvider } from "../context/match/context";
+import { SportsProvider } from "../context/sports/context";
+import { TeamsProvider } from "../context/teams/context";
+import Account from "../pages/account";
+import AContainer from "../pages/account/Acontainer";
 import Example from "../pages/Example";
 import Match from "../pages/match";
 import Signin from "../pages/signin";
@@ -67,13 +71,49 @@ const router = createBrowserRouter([
     path: "/account",
     element: (
       <ProtectedRoute>
-        <AccountLayout />
+        <SportsProvider>
+          <TeamsProvider>
+            <AccountLayout />
+          </TeamsProvider>
+        </SportsProvider>
       </ProtectedRoute>
     ),
+    children: [
+      { index: true, element: <Navigate to="/account/dashboard" replace /> },
+      {
+        path: "dashboard",
+        element: <AContainer />,
+        children: [
+          { index: true, element: <Account /> },
+          {
+            path: "matches/:matchID",
+            element: (
+              <MatchProvider>
+                <Match />
+              </MatchProvider>
+            ),
+          },
+          {
+            path: "articles/:articleID",
+            element: (
+              <ArticleProvider>
+                <Articles />
+              </ArticleProvider>
+            ),
+          },
+        ],
+      },
+    ],
   },
   {
     path: "/example",
-    element: <Example />,
+    element: (
+      <SportsProvider>
+        <TeamsProvider>
+          <Example />
+        </TeamsProvider>
+      </SportsProvider>
+    ),
   },
 ]);
 

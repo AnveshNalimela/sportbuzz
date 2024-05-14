@@ -21,7 +21,6 @@ export default function ArticleListItems() {
   if (isError) {
     return <span>{errorMessage}</span>;
   }
- 
 
   return (
     <>
@@ -31,7 +30,7 @@ export default function ArticleListItems() {
         .map((article: any) => (
           <div
             key={article.id}
-            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex "
+            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex my-2"
           >
             <img
               src={article.thumbnail}

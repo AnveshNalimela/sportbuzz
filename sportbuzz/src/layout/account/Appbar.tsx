@@ -1,7 +1,7 @@
 import { Disclosure, Menu, Switch, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import React, { Fragment, useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Fragment, default as React, useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 
@@ -17,6 +17,9 @@ const Appbar = () => {
   const { pathname } = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
+  const [isSportsPopoverOpen, setIsSportsPopoverOpen] = useState(false);
+  const [isTeamsPopoverOpen, setIsTeamsPopoverOpen] = useState(false);
+
   const toggleTheme = () => {
     let newTheme = "";
     if (theme === "light") {
@@ -27,11 +30,6 @@ const Appbar = () => {
     setEnabled(!enabled);
     setTheme(newTheme);
   };
-
-  const navigation = [
-    { name: "Projects", href: "/account/projects", current: false },
-    { name: "Members", href: "/account/members", current: false },
-  ];
 
   return (
     <>
@@ -45,27 +43,7 @@ const Appbar = () => {
                   <h2 className="text-3xl font-bold ml-2">SportBuzz</h2>
                 </div>
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => {
-                      const isCurrent = pathname.includes(item.href);
-
-                      return (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            isCurrent
-                              ? "bg-slate-50 text-blue-700"
-                              : "text-slate-500 hover:text-blue-600",
-                            "rounded-md px-3 py-2 text-sm font-medium"
-                          )}
-                          aria-current={isCurrent ? "page" : undefined}
-                        >
-                          {item.name}
-                        </Link>
-                      );
-                    })}
-                  </div>
+                  <div className="ml-10 flex items-baseline space-x-4"></div>
                 </div>
               </div>
               <div className="hidden md:block">
