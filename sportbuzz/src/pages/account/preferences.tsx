@@ -79,9 +79,18 @@ export default function Preferences() {
                     className="text-base/7 font-medium text-black"
                   ></DialogTitle>
                   <div>
-                    <p className="text-lg font-medium text-cyan-600 mb-2">
-                      Based On Sports
-                    </p>
+                    <div className="flex justify-between items-center mb-2">
+                      <p className="text-lg font-medium text-cyan-600">
+                        Based On Sports
+                      </p>
+                      <Button
+                        className="inline-flex items-center gap-2 rounded-md bg-gray-400 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                        onClick={close}
+                      >
+                        Close
+                      </Button>
+                    </div>
+
                     <SportList
                       psports={sports}
                       pteams={teams}
@@ -96,14 +105,7 @@ export default function Preferences() {
                       fetchPrefernces={fetchPrefernces}
                     />
                   </div>
-                  <div className="mt-4 flex gap-4">
-                    <Button
-                      className="inline-flex items-center gap-2 rounded-md bg-gray-400 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                      onClick={close}
-                    >
-                      Close
-                    </Button>
-                  </div>
+                  <div className="mt-4 flex gap-4"></div>
                 </DialogPanel>
               </TransitionChild>
             </div>

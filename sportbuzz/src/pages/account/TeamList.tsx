@@ -73,10 +73,10 @@ const TeamList = ({ pteams, psports, fetchPrefernces }) => {
         </div>
       ))}
       <Button
-        className=" w-full  inline-flex items-center gap-2 rounded-md bg-green-400 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-green-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+        className=" w-20 mt-2 text-center inline-flex items-center gap-2 rounded-md bg-cyan-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-green-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
         onClick={TPreferences}
       >
-        Update Sports
+        Update
       </Button>
     </div>
   );
