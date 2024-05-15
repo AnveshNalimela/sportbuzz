@@ -13,8 +13,8 @@ import { SportsProvider } from "../context/sports/context";
 import { TeamsProvider } from "../context/teams/context";
 import Account from "../pages/account";
 import AContainer from "../pages/account/Acontainer";
-import Example from "../pages/Example";
 import Match from "../pages/match";
+import Profile from "../pages/profile";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import ProtectedRoute from "./ProtectedRoute";
@@ -86,6 +86,10 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Account /> },
           {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
             path: "matches/:matchID",
             element: (
               <MatchProvider>
@@ -104,16 +108,6 @@ const router = createBrowserRouter([
         ],
       },
     ],
-  },
-  {
-    path: "/example",
-    element: (
-      <SportsProvider>
-        <TeamsProvider>
-          <Example />
-        </TeamsProvider>
-      </SportsProvider>
-    ),
   },
 ]);
 

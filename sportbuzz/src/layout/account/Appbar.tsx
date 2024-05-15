@@ -6,7 +6,7 @@ import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 
 const userNavigation = [
-  { name: "Profile", href: "#" },
+  { name: "Profile", href: "/account/dashboard/profile" },
   { name: "Sign out", href: "/logout" },
 ];
 
@@ -17,8 +17,6 @@ const Appbar = () => {
   const { pathname } = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
-  const [isSportsPopoverOpen, setIsSportsPopoverOpen] = useState(false);
-  const [isTeamsPopoverOpen, setIsTeamsPopoverOpen] = useState(false);
 
   const toggleTheme = () => {
     let newTheme = "";

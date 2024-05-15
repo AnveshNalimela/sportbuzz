@@ -6,6 +6,7 @@ import { useSportsState } from "../../../context/sports/context";
 const SportList = ({ psports, pteams, fetchPrefernces }) => {
   const state = useSportsState();
   const { sports } = state;
+  console.log(psports, pteams);
 
   const [checkedSports, setCheckedSports] = useState([]);
 
@@ -46,6 +47,7 @@ const SportList = ({ psports, pteams, fetchPrefernces }) => {
       console.log("Error updating preferences:", error);
     }
   };
+  console.log(sports);
 
   const SPreferences = () => {
     console.log("update preferences");
