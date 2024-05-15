@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMatchesState } from "../../../context/matches/context";
 import MatchItem from "./MatchItem";
+import { API_ENDPOINT } from "../../../config/constants";
 
-export default function RecentListItems() {
+export default function PreferedMatchList() {
+  let [sports, setSports] = useState({});
+  let [teams, setTeams] = useState({});
   const state = useMatchesState();
   const { matches, isLoading, isError, errorMessage } = state;
   const sortedMatches = matches.sort((a, b) => {
@@ -10,7 +13,27 @@ export default function RecentListItems() {
     const endDateB = new Date(b.endsAt).getTime();
     return endDateB - endDateA; // Sort in descending order
   });
+  const fetchPrefernces = async () => {
+    const token = localStorage.getItem("authToken") ?? "";
 
+    try {
+      const response = await fetch(`${API_ENDPOINT}/user/preferences`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the authorization token in the header
+        },
+      });
+      const data = await response.json();
+      const preferences = data.preferences;
+      setSports(preferences.sports);
+      setTeams(preferences.teams);
+      console.log(preferences, "are succesfully retrieved");
+    } catch (error) {
+      console.log("Error fetching preferences:", error);
+    }
+  };
+  
   // Step 2: Take the first five elements from the sorted array
   const recentMatches = sortedMatches.slice(0, 5);
 

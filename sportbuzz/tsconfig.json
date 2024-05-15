@@ -10,7 +10,9 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true, // or "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true
   },
   "include": ["src", "vite-env.d.ts"]
 }

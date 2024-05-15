@@ -2,6 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* .dark {
-  @apply bg-slate-800 text-zinc-50;
-} */
+.dark {
+  @apply bg-slate-800 text-gray-900;
+}

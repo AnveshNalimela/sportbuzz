@@ -5,7 +5,12 @@ import { useArticleState } from "../../context/article/context";
 const ArticleDetails = () => {
   const navigate = useNavigate();
   const GoBack = () => {
-    navigate("/");
+    const token = localStorage.getItem("authToken") ?? "";
+    if (token) {
+      navigate("/account");
+    } else {
+      navigate("/");
+    }
   };
   const state = useArticleState();
   const { article, isLoading, isError, errorMessage } = state;

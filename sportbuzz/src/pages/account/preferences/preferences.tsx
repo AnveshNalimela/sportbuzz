@@ -7,7 +7,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
-import { API_ENDPOINT } from "../../config/constants";
+import { API_ENDPOINT } from "../../../config/constants";
 import SportList from "./SportList";
 import TeamList from "./TeamList";
 

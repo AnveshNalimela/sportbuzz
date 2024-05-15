@@ -1,7 +1,7 @@
 import { Disclosure, Menu, Switch, Transition } from "@headlessui/react";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 import React, { Fragment, useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 
@@ -28,11 +28,6 @@ const Appbar = () => {
     setTheme(newTheme);
   };
 
-  const navigation = [
-    { name: "Sports", href: "/home/sports", current: false },
-    { name: "Teams", href: "/home/teams", current: false },
-  ];
-
   return (
     <>
       <Disclosure as="nav" className="border-b border-slate-200">
@@ -45,27 +40,7 @@ const Appbar = () => {
                   <h2 className="text-3xl font-bold ml-2">SportBuzz</h2>
                 </div>
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => {
-                      const isCurrent = pathname.includes(item.href);
-
-                      return (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            isCurrent
-                              ? "bg-slate-50 text-gray-900"
-                              : "text-slate-500 hover:text-blue-600",
-                            "rounded-md px-3 py-2 text-sm font-medium"
-                          )}
-                          aria-current={isCurrent ? "page" : undefined}
-                        >
-                          {item.name}
-                        </Link>
-                      );
-                    })}
-                  </div>
+                  <div className="ml-10 flex items-baseline space-x-4"></div>
                 </div>
               </div>
               <div className="hidden md:block">

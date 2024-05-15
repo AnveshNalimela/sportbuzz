@@ -1,25 +1,24 @@
 import { Button } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
-import { API_ENDPOINT } from "../../config/constants";
-import { useSportsState } from "../../context/sports/context";
+import { API_ENDPOINT } from "../../../config/constants";
+import { useTeamsState } from "../../../context/teams/context";
 
-const SportList = ({ psports, pteams, fetchPrefernces }) => {
-  const state = useSportsState();
-  const { sports } = state;
-
-  const [checkedSports, setCheckedSports] = useState([]);
+const TeamList = ({ pteams, psports, fetchPrefernces }) => {
+  const Teamstate = useTeamsState();
+  const { teams, isLoading, isError, errorMessage } = Teamstate;
+  const [checkedTeams, setCheckedTeams] = useState([]);
 
   useEffect(() => {
     // Set initially checked sports
-    setCheckedSports(Object.keys(psports).filter((sport) => psports[sport]));
+    setCheckedTeams(Object.keys(pteams).filter((team) => pteams[team]));
   }, [psports]);
 
-  const handleCheckboxChange = (sportName) => {
-    const updatedCheckedSports = checkedSports.includes(sportName)
-      ? checkedSports.filter((name) => name !== sportName)
-      : [...checkedSports, sportName];
+  const handleCheckboxChange = (teamName) => {
+    const updatedCheckedTeams = checkedTeams.includes(teamName)
+      ? checkedTeams.filter((name) => name !== teamName)
+      : [...checkedTeams, teamName];
 
-    setCheckedSports(updatedCheckedSports);
+    setCheckedTeams(updatedCheckedTeams);
   };
   const updatePreferences = async (updatedPreferences) => {
     const token = localStorage.getItem("authToken") ?? "";
@@ -40,42 +39,42 @@ const SportList = ({ psports, pteams, fetchPrefernces }) => {
 
       const data = await response.json();
 
-      console.log("succesfully updated the sports prefernces");
-      fetchPrefernces(); // Success message
+      console.log("succesfully updated the teams prefernces"); // Success message
+      fetchPrefernces();
     } catch (error) {
       console.log("Error updating preferences:", error);
     }
   };
 
-  const SPreferences = () => {
+  const TPreferences = () => {
     console.log("update preferences");
-    const updatedSports = checkedSports.reduce((acc, curr) => {
+    const updatedTeams = checkedTeams.reduce((acc, curr) => {
       acc[curr] = true;
       return acc;
     }, {});
-    const updatedPreferences = { teams: pteams, sports: updatedSports };
+    const updatedPreferences = { teams: updatedTeams, sports: psports };
     updatePreferences(updatedPreferences);
   };
 
   return (
     <div className="grid grid-cols-2 gap-1 mb-3">
-      {sports.map((sport) => (
+      {teams.map((team) => (
         <div
-          key={sport.id}
+          key={team.id}
           className="p-3 flex block rounded-lg py-2 px-3 transition hover:bg-gray-200/5"
         >
           <input
             type="checkbox"
             className="appearance-none border border-gray-400 rounded-md w-6 h-6 checked:bg-green-300 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 mr-2 "
-            checked={checkedSports.includes(sport.name)}
-            onChange={() => handleCheckboxChange(sport.name)}
+            checked={checkedTeams.includes(team.name)}
+            onChange={() => handleCheckboxChange(team.name)}
           />
-          <p className="font-semibold text-gray-500">{sport.name}</p>
+          <p className="font-semibold text-gray-500">{team.name}</p>
         </div>
       ))}
       <Button
         className=" w-20 mt-2 text-center inline-flex items-center gap-2 rounded-md bg-cyan-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-green-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-        onClick={SPreferences}
+        onClick={TPreferences}
       >
         Update
       </Button>
@@ -83,4 +82,4 @@ const SportList = ({ psports, pteams, fetchPrefernces }) => {
   );
 };
 
-export default SportList;
+export default TeamList;

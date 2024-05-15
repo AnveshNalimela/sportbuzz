@@ -1,7 +1,7 @@
 import React from "react";
 import ArticlesList from "../home/articles/ArticlesList";
 import MatchList from "../home/matches/MatchList";
-import Preferences from "./preferences";
+import Preferences from "./preferences/preferences";
 
 const Account = () => {
   const token = localStorage.getItem("authToken") ?? "";
