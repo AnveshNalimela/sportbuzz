@@ -22,7 +22,7 @@ import ProtectedRoute from "./ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/home" replace />,
+    element: <Navigate to="/account" replace />,
   },
   {
     path: "/signin",

@@ -51,9 +51,10 @@ const ArticleDetails = () => {
             </p>
           ))}
         </div>
+
         <button
           onClick={GoBack}
-          className="bg-blue-500 text-white p-2 rounded-lg mt-4"
+          className="text-lg bg-green-300 hover:bg-green-500 px-4 py-1 text-center w-full h-10 rounded mx-1 mt-3 "
         >
           Go Home
         </button>
