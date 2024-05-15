@@ -7,14 +7,11 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
-import { API_ENDPOINT } from "../../../config/constants";
 import SportList from "./SportList";
 import TeamList from "./TeamList";
 
-export default function Preferences() {
+export default function Preferences({ fetchPrefernces, psports, pteams }) {
   let [isOpen, setIsOpen] = useState(false);
-  let [sports, setSports] = useState({});
-  let [teams, setTeams] = useState({});
 
   function open() {
     setIsOpen(true);
@@ -24,26 +21,6 @@ export default function Preferences() {
     setIsOpen(false);
   }
 
-  const fetchPrefernces = async () => {
-    const token = localStorage.getItem("authToken") ?? "";
-
-    try {
-      const response = await fetch(`${API_ENDPOINT}/user/preferences`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the authorization token in the header
-        },
-      });
-      const data = await response.json();
-      const preferences = data.preferences;
-      setSports(preferences.sports);
-      setTeams(preferences.teams);
-      console.log(preferences, "are succesfully retrieved");
-    } catch (error) {
-      console.log("Error fetching preferences:", error);
-    }
-  };
   useEffect(() => {
     fetchPrefernces();
   }, []);
@@ -92,16 +69,16 @@ export default function Preferences() {
                     </div>
 
                     <SportList
-                      psports={sports}
-                      pteams={teams}
+                      psports={psports}
+                      pteams={pteams}
                       fetchPrefernces={fetchPrefernces}
                     />
                     <p className="text-lg font-medium text-cyan-600 mb-2">
                       Based On Teams
                     </p>
                     <TeamList
-                      pteams={teams}
-                      psports={sports}
+                      pteams={pteams}
+                      psports={psports}
                       fetchPrefernces={fetchPrefernces}
                     />
                   </div>
