@@ -14,11 +14,11 @@ import { TeamsProvider } from "../context/teams/context";
 import Account from "../pages/account";
 import AContainer from "../pages/account/Acontainer";
 import Match from "../pages/match";
+import Notfound from "../pages/Notfound";
 import Profile from "../pages/profile";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import ProtectedRoute from "./ProtectedRoute";
-import Notfound from "../pages/Notfound";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +43,7 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     children: [
       { index: true, element: <Navigate to="/home/index" replace /> },
+
       {
         path: "index",
         element: <Container />,
@@ -112,9 +113,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"*",
-    element:<Notfound/>
-  }
+    path: "*",
+    element: <Notfound />,
+  },
 ]);
 
 export default router;

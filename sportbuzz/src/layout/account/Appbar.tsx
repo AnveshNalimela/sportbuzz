@@ -6,7 +6,7 @@ import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 
 const userNavigation = [
-  { name: "Profile", href: "/profile" },
+  { name: "Profile", href: "dashboard/profile" },
   { name: "Sign out", href: "/logout" },
 ];
 
