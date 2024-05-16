@@ -18,6 +18,7 @@ import Profile from "../pages/profile";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import ProtectedRoute from "./ProtectedRoute";
+import Notfound from "../pages/Notfound";
 
 const router = createBrowserRouter([
   {
@@ -47,14 +48,7 @@ const router = createBrowserRouter([
         element: <Container />,
         children: [
           { index: true, element: <Home /> },
-          {
-            path: "signin",
-            element: <Signin />,
-          },
-          {
-            path: "signup",
-            element: <Signup />,
-          },
+
           {
             path: "matches/:matchID",
             element: (
@@ -117,6 +111,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"*",
+    element:<Notfound/>
+  }
 ]);
 
 export default router;
