@@ -12,6 +12,7 @@ import TeamList from "./TeamList";
 
 export default function Preferences({ fetchPrefernces, psports, pteams }) {
   let [isOpen, setIsOpen] = useState(false);
+  let psportsValue, pteamsValue;
 
   function open() {
     setIsOpen(true);
@@ -24,6 +25,19 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
   useEffect(() => {
     fetchPrefernces();
   }, []);
+  if (psports === null || psports === undefined) {
+    psportsValue = {}; // Send an empty object
+  } else {
+    psportsValue = psports;
+  }
+
+  // Assuming pteams is similarly handled
+  if (pteams === null || pteams === undefined) {
+    pteamsValue = {}; // Send an empty object
+  } else {
+    pteamsValue = pteams;
+  }
+
   return (
     <>
       <Button
@@ -69,16 +83,16 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                     </div>
 
                     <SportList
-                      psports={psports}
-                      pteams={pteams}
+                      psports={psportsValue}
+                      pteams={pteamsValue}
                       fetchPrefernces={fetchPrefernces}
                     />
                     <p className="text-lg font-medium text-cyan-600 mb-2">
                       Based On Teams
                     </p>
                     <TeamList
-                      pteams={pteams}
-                      psports={psports}
+                      pteams={pteamsValue}
+                      psports={psportsValue}
                       fetchPrefernces={fetchPrefernces}
                     />
                   </div>

@@ -13,9 +13,9 @@ const PArticles: React.FC<PArticlesProps> = ({ psports }) => {
   if (typeof psports === "object") {
     const sports = Object.keys(psports);
 
-    if (sports.length === 0) {
+    if (sports.length == 0) {
       return (
-        <div className="w-full">
+        <div className="">
           <ArticlesList />
         </div>
       );
@@ -50,6 +50,7 @@ const PArticles: React.FC<PArticlesProps> = ({ psports }) => {
         <h2 className="text-red-500 text-center font-semibold py-10">
           Add Prefernces for Better Experinces
         </h2>
+        <ArticlesList />
       </>
     );
   }

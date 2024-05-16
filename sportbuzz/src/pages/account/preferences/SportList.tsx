@@ -6,6 +6,7 @@ import { useSportsState } from "../../../context/sports/context";
 const SportList = ({ psports, pteams, fetchPrefernces }) => {
   const state = useSportsState();
   const { sports } = state;
+
   console.log(psports, pteams);
 
   const [checkedSports, setCheckedSports] = useState([]);

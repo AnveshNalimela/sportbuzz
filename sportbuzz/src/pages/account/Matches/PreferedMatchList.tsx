@@ -64,5 +64,17 @@ export default function PreferedMatchList({ psports, pteams }) {
         </>
       );
     }
+  } else {
+    let recentMatches = sortedMatches.slice(0, 4);
+    return (
+      <>
+        <h2 className="text-red-500 text-center font-semibold py-10">
+          Add Prefernces for Better Experinces
+        </h2>
+        {recentMatches.map((match: any) => (
+          <MatchItem key={match.id} matchId={match.id} />
+        ))}
+      </>
+    );
   }
 }
