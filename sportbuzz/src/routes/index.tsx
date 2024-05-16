@@ -22,7 +22,7 @@ import ProtectedRoute from "./ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/account" replace />,
+    element: <Navigate to="/home" replace />,
   },
   {
     path: "/signin",
@@ -47,6 +47,14 @@ const router = createBrowserRouter([
         element: <Container />,
         children: [
           { index: true, element: <Home /> },
+          {
+            path: "signin",
+            element: <Signin />,
+          },
+          {
+            path: "signup",
+            element: <Signup />,
+          },
           {
             path: "matches/:matchID",
             element: (
