@@ -22,7 +22,7 @@ const Account = () => {
         },
       });
       const data = await response.json();
-      const preferences = data.preferences;
+      const preferences = data.preferences || {};
       setSports(preferences.sports);
       setTeams(preferences.teams);
       console.log(preferences, "are succesfully retrieved");

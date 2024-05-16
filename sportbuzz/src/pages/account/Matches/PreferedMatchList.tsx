@@ -14,26 +14,6 @@ export default function PreferedMatchList({ psports, pteams }) {
     const endDateB = new Date(b.endsAt).getTime();
     return endDateB - endDateA; // Sort in descending order
   });
-
-  const sports = Object.keys(psports);
-  const teams = Object.keys(pteams);
-
-  // Step 2: Take the first five elements from the sorted array
-  const filteredMatches = sortedMatches.filter((match) => {
-    // Check if sportName exists in the sports array
-    const sportExists = sports.some((sport) => sport === match.sportName);
-    // Check if both teams exist in the teams array
-    const teamExists1 = teams.some((team) => team === match.teams[0].name);
-    const teamExists2 = teams.some((team) => team === match.teams[1].name);
-
-    // Return true if at least one condition is met
-    return sportExists || teamExists1 || teamExists2;
-  });
-
-  // Display the first five matches from the filtered array
-  let recentMatches = filteredMatches.slice(0, 5);
-  console.log(recentMatches);
-  // Check if matches is undefined or null
   if (matches === undefined || matches === null) {
     return <span>Loading...</span>;
   }
@@ -47,22 +27,42 @@ export default function PreferedMatchList({ psports, pteams }) {
   if (isError) {
     return <span>{errorMessage}</span>;
   }
-  if (recentMatches.length === 0) {
-    return (
-      <h2 className="text-red-500 text-center font-semibold py-10">
-        No Live Matches currently Going On your Prefernces Based
-      </h2>
-    );
-  }
-  if (sports.length === 0 && teams.length === 0) {
-    recentMatches = sortedMatches.slice(0, 5);
-  }
+  if (typeof psports === "object" && typeof pteams === "object") {
+    const sports = Object.keys(psports);
+    const teams = Object.keys(pteams);
+    if (sports.length == 0 && teams.length == 0) {
+      let recentMatches = sortedMatches.slice(0, 4);
+      return (
+        <>
+          <h2 className="text-red-500 text-center font-semibold py-10">
+            Add Prefernces for Better Experinces
+          </h2>
+          {recentMatches.map((match: any) => (
+            <MatchItem key={match.id} matchId={match.id} />
+          ))}
+        </>
+      );
+    } else {
+      const filteredMatches = sortedMatches.filter((match) => {
+        // Check if sportName exists in the sports array
+        const sportExists = sports.some((sport) => sport === match.sportName);
+        // Check if both teams exist in the teams array
+        const teamExists1 = teams.some((team) => team === match.teams[0].name);
+        const teamExists2 = teams.some((team) => team === match.teams[1].name);
 
-  return (
-    <>
-      {recentMatches.map((match: any) => (
-        <MatchItem key={match.id} matchId={match.id} />
-      ))}
-    </>
-  );
+        // Return true if at least one condition is met
+        return sportExists || teamExists1 || teamExists2;
+      });
+      // Display the first five matches from the filtered array
+      let recentMatches = filteredMatches.slice(0, 5);
+      console.log(recentMatches);
+      return (
+        <>
+          {recentMatches.map((match: any) => (
+            <MatchItem key={match.id} matchId={match.id} />
+          ))}
+        </>
+      );
+    }
+  }
 }
