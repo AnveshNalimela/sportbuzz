@@ -1,0 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.dark {
+  @apply bg-slate-800 text-gray-900;
+}
