@@ -2,10 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
 
-export default function ArticleListItems() {
+export default function ArticleListItems({ selected }) {
   const state = useArticlesState();
   const { articles, isLoading, isError, errorMessage } = state;
-  const articlesList = articles;
+  let articlesList = articles;
+  if (selected) {
+    articlesList = articles.filter(
+      (article) => article.sport.name === selected
+    );
+  }
 
   // Check if matches is undefined or null
   if (articles === undefined || articles === null) {

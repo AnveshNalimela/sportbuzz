@@ -5,6 +5,7 @@ import football from "../../../assets/images/football.png";
 import live from "../../../assets/images/live.png";
 import reload from "../../../assets/images/reload.png";
 import { API_ENDPOINT } from "../../../config/constants";
+import "./styles.css";
 
 interface MatchItemProps {
   matchId: number;
@@ -106,7 +107,7 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
               <button onClick={handleRefreshScores}>
                 <img
                   src={reload}
-                  className="h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4"
+                  className="h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4 "
                 />
               </button>
             </div>
