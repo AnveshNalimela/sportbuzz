@@ -1,0 +1,10 @@
+/* In your CSS file or within a style tag */
+.tab-panels-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab-panel {
+  flex: 1 1 100%; /* Each TabPanel takes full width of the container */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}

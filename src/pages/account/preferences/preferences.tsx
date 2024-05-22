@@ -75,10 +75,10 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                         Based On Sports
                       </p>
                       <Button
-                        className="inline-flex items-center gap-2 rounded-md bg-gray-400 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                        className="inline-flex items-center gap-2 rounded-md bg-gray-500 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                         onClick={close}
                       >
-                        Close
+                        X Close
                       </Button>
                     </div>
 
@@ -86,6 +86,7 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                       psports={psportsValue}
                       pteams={pteamsValue}
                       fetchPrefernces={fetchPrefernces}
+                      close={close}
                     />
                     <p className="text-lg font-medium text-cyan-600 mb-2">
                       Based On Teams
@@ -94,6 +95,7 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                       pteams={pteamsValue}
                       psports={psportsValue}
                       fetchPrefernces={fetchPrefernces}
+                      close={close}
                     />
                   </div>
                   <div className="mt-4 flex gap-4"></div>

@@ -37,23 +37,23 @@ const Account = () => {
   return (
     <>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-700">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-700 mt-3">
           Live Matches
         </h2>
-      </div>
-      <PMatchList psports={sports} pteams={teams} />
-      <div className="flex justify-between">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-700">
-          Trending Articles
-        </h2>
-      </div>
-      <div className="flex">
-        <PArticles psports={sports} />
         <Preferences
           fetchPrefernces={fetchPrefernces}
           psports={sports}
           pteams={teams}
         />
+      </div>
+      <PMatchList psports={sports} pteams={teams} />
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-700 mb-2">
+          Trending Articles
+        </h2>
+      </div>
+      <div className="">
+        <PArticles psports={sports} />
       </div>
     </>
   );

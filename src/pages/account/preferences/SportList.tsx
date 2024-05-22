@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { API_ENDPOINT } from "../../../config/constants";
 import { useSportsState } from "../../../context/sports/context";
 
-const SportList = ({ psports, pteams, fetchPrefernces }) => {
+const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
   const state = useSportsState();
   const { sports } = state;
 
@@ -43,7 +43,8 @@ const SportList = ({ psports, pteams, fetchPrefernces }) => {
       const data = await response.json();
 
       console.log("succesfully updated the sports prefernces");
-      fetchPrefernces(); // Success message
+      fetchPrefernces();
+      close(); // Success message
     } catch (error) {
       console.log("Error updating preferences:", error);
     }
@@ -77,10 +78,10 @@ const SportList = ({ psports, pteams, fetchPrefernces }) => {
         </div>
       ))}
       <Button
-        className=" w-20 mt-2 text-center inline-flex items-center gap-2 rounded-md bg-cyan-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-green-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+        className=" w-full mt-2 text-center  rounded-md bg-blue-400 py-2 px-3 text-lg/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-blue-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
         onClick={SPreferences}
       >
-        Update
+        Update Sports
       </Button>
     </div>
   );

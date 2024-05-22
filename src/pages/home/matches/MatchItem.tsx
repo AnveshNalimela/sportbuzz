@@ -114,9 +114,6 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
           ) : (
             <div className="flex justify-around ">
               <img src={completed} alt="Completed" className="w-15 h-12 mt-2" />
-              {/* <div className="font-bold text-end mt-2 ml-2 text-lg text-green-500">
-                {winner} wins!
-              </div> */}
             </div>
           )}
         </div>

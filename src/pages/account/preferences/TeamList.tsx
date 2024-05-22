@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { API_ENDPOINT } from "../../../config/constants";
 import { useTeamsState } from "../../../context/teams/context";
 
-const TeamList = ({ pteams, psports, fetchPrefernces }) => {
+const TeamList = ({ pteams, psports, fetchPrefernces, close }) => {
   const Teamstate = useTeamsState();
   const { teams, isLoading, isError, errorMessage } = Teamstate;
   const [checkedTeams, setCheckedTeams] = useState([]);
@@ -41,6 +41,7 @@ const TeamList = ({ pteams, psports, fetchPrefernces }) => {
 
       console.log("succesfully updated the teams prefernces"); // Success message
       fetchPrefernces();
+      close();
     } catch (error) {
       console.log("Error updating preferences:", error);
     }
@@ -73,10 +74,10 @@ const TeamList = ({ pteams, psports, fetchPrefernces }) => {
         </div>
       ))}
       <Button
-        className=" w-20 mt-2 text-center inline-flex items-center gap-2 rounded-md bg-cyan-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-green-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+        className=" w-full mt-2 text-center  rounded-md bg-blue-400 py-2 px-3 text-lg/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-blue-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
         onClick={TPreferences}
       >
-        Update
+        Update Teams
       </Button>
     </div>
   );

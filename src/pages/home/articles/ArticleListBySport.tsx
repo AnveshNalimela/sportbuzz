@@ -57,7 +57,7 @@ const ArticleListBySport: React.FC<ArticleListBySportProps> = ({
               </h3>
 
               <p className="text-zinc-600 dark:text-zinc-400 mt-2">
-                {new Date(article.date).toLocaleString()}
+                {new Date(article.date).toLocaleString().split(",")[0]}
               </p>
               <p className="text-green-600 font-semibold dark:text-zinc-400 mt-1">
                 {article.sport.name}

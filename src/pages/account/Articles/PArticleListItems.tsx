@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
 
-export default function PArticleListItems({ psports }) {
+const PArticleListItems = ({ psports }) => {
   const state = useArticlesState();
   const { articles, isLoading, isError, errorMessage } = state;
 
@@ -52,14 +52,14 @@ export default function PArticleListItems({ psports }) {
       {recentArticles.map((article: any) => (
         <div
           key={article.id}
-          className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex my-2"
+          className="w-full bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex my-4"
         >
           <img
             src={article.thumbnail}
             alt="Article Thumbnail"
-            className="w-1/3 h-48 object-cover object-center"
+            className="w-1/4 h-48 object-cover object-center"
           />
-          <div className="p-4 w-2/3">
+          <div className="p-4 w-3/4">
             <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
               {article.title}
             </h3>
@@ -74,7 +74,7 @@ export default function PArticleListItems({ psports }) {
               {article.summary}
             </p>
             <Link key={article.id} to={`articles/${article.id}`}>
-              <button className="bg-blue-500 text-white p-2 rounded-lg mt-2">
+              <button className="bg-blue-500 text-white p-2 rounded-lg mt-1">
                 Read more
               </button>
             </Link>
@@ -83,4 +83,5 @@ export default function PArticleListItems({ psports }) {
       ))}
     </>
   );
-}
+};
+export default PArticleListItems;

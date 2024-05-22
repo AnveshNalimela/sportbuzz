@@ -3,5 +3,5 @@
 @import "tailwindcss/utilities";
 
 .dark {
-  @apply bg-slate-800 text-gray-900;
+  @apply bg-slate-400 text-gray-900;
 }
