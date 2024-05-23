@@ -69,7 +69,7 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
   }
 
   return (
-    <div className="w-full h-full mx-auto bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+    <div className="w-full h-full mx-auto bg-white rounded-lg shadow-md overflow-hidden flex flex-col ">
       <Link key={match.id} to={`matches/${match.id}`}>
         <div className="px-5 flex py-2 bg-zinc-100">
           <div>

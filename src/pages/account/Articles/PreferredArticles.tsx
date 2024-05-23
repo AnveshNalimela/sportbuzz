@@ -81,7 +81,11 @@ const PreferredArticles = ({ sports, teams }) => {
 
           <TabPanels className="mt-3">
             <TabPanel className="rounded-xl bg-gray/5 p-3">
-              <PreferredArticleItem sports={sports} teams={teams} selected={selectedSport}/>
+              <PreferredArticleItem
+                sports={sports}
+                teams={teams}
+                selected={selectedSport}
+              />
             </TabPanel>
             {sports.map((sport) => (
               <TabPanel key={sport.id} className="rounded-xl bg-gray/5 p-3">

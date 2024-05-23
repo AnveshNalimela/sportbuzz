@@ -29,7 +29,7 @@ export default function ArticleListItems({ selected }) {
   }
 
   return (
-    <div className="h-300 grid gap-4 grid-cols-4 my-5 rounded p-3">
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-2 rounded p-3">
       {articlesList
         ?.slice(Math.max(articlesList.length - 8, 0))
         .reverse()

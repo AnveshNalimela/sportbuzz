@@ -10,7 +10,7 @@ interface PMatchListProps {
 const PMatchList: React.FC<PMatchListProps> = ({ psports, pteams }) => {
   return (
     <div>
-      <div className="h-400 grid gap-4 grid-cols-5 my-5 border rounded p-3">
+      <div className="h-400 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 my-2 rounded p-3">
         <PreferedMatchList psports={psports} pteams={pteams} />
       </div>
     </div>
