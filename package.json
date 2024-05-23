@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",
     "react-router-dom": "^6.23.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite-plugin-pwa": "^0.20.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.8",

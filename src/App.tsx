@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import { RouterProvider } from "react-router-dom";
 import { ArticlesProvider } from "./context/articles/context";
 import { MatchesProvider } from "./context/matches/context";
@@ -17,7 +17,9 @@ function App() {
         <ArticlesProvider>
           <SportsProvider>
             <TeamsProvider>
-              <RouterProvider router={router} />
+              <Suspense fallback={<>Loading...</>}>
+                <RouterProvider router={router} />
+              </Suspense>
             </TeamsProvider>
           </SportsProvider>
         </ArticlesProvider>

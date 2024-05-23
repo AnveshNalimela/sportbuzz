@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 
-import ArticlesList from "./articles/ArticlesList";
-import MatchList from "./matches/MatchList";
+import ErrorBoundary from "../../components/ErrorBoundary";
+
+const ArticlesList = React.lazy(() => import("./articles/ArticlesList"));
+const MatchList = React.lazy(() => import("./matches/MatchList"));
 
 const Home = () => {
   return (
@@ -11,7 +13,11 @@ const Home = () => {
           Live Matches
         </h2>
       </div>
-      <MatchList />
+      <ErrorBoundary>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+          <MatchList />
+        </Suspense>
+      </ErrorBoundary>
 
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold tracking-tight text-slate-700">
@@ -19,7 +25,13 @@ const Home = () => {
         </h2>
       </div>
       <div className="flex">
-        <ArticlesList />
+        <ErrorBoundary>
+          <Suspense
+            fallback={<div className="suspense-loading">Loading...</div>}
+          >
+            <ArticlesList />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </>
   );
