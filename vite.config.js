@@ -21,12 +21,7 @@ export default defineConfig({
             "type": "image/x-icon"
           },
 
-          {
-            "src": "/public/stadium.ico",
-            "type": "image/png",
-            "sizes": "512x512",
-            "purpose": "any maskable" // Icon format that ensures that your PWA icon looks great on all Android devices
-          }
+
         ],
         theme_color: '#AAF',
       },
