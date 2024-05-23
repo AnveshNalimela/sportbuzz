@@ -32,48 +32,55 @@ const ArticleListBySport: React.FC<ArticleListBySportProps> = ({
     return <span>{errorMessage}</span>;
   }
   if (filteredArticles.length === 0) {
-    <h2 className="text-gray-500 font-semibold px-10 py-10 text-center">
-      No Articles Related to {sportName}
-    </h2>;
+    return (
+      <h2 className="text-red-500 font-semibold px-10 py-10 text-center">
+        No Articles Related to {sportName}
+      </h2>
+    );
   }
   return (
-    <>
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-2 rounded p-3">
       {filteredArticles
-        ?.slice(Math.max(filteredArticles.length - 5, 0))
+        ?.slice(Math.max(filteredArticles.length - 8, 0))
         .reverse()
         .map((article: any) => (
           <div
             key={article.id}
-            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden flex my-4"
+            className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg overflow-hidden my-2 flex flex-col"
           >
             <img
               src={article.thumbnail}
               alt="Article Thumbnail"
-              className="w-1/3 h-48 object-cover object-center"
+              className="w-full h-48 object-cover object-center"
             />
-            <div className="p-4 w-2/3">
-              <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+            <div className="p-4 flex-1 flex flex-col">
+              <h3 className="text-center text-lg font-semibold text-zinc-800 dark:text-zinc-200">
                 {article.title}
               </h3>
-
-              <p className="text-zinc-600 dark:text-zinc-400 mt-2">
-                {new Date(article.date).toLocaleString()}
-              </p>
-              <p className="text-green-600 font-semibold dark:text-zinc-400 mt-1">
-                {article.sport.name}
-              </p>
               <p className="text-zinc-600 text-sm dark:text-zinc-400 mt-1">
                 {article.summary}
               </p>
-              <Link key={article.id} to={`articles/${article.id}`}>
-                <button className="bg-blue-500 text-white p-2 rounded-lg mt-1">
+              <div className="flex justify-between items-center w-full text-center my-3">
+                <p className="text-zinc-600 dark:text-zinc-400 font-bold">
+                  {new Date(article.date).toLocaleString().split(",")[0]}
+                </p>
+                <p className="bg-slate-200 rounded px-3 py-1 font-semibold dark:text-zinc-400 font-bold">
+                  {article.sport.name}
+                </p>
+              </div>
+              <Link
+                key={article.id}
+                to={`articles/${article.id}`}
+                className="mt-auto"
+              >
+                <button className="bg-slate-500 hover:bg-slate-700 text-white p-2 rounded-lg mt-3 w-full">
                   Read more
                 </button>
               </Link>
             </div>
           </div>
         ))}
-    </>
+    </div>
   );
 };
 

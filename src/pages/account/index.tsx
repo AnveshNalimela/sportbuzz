@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
-import PArticles from "./Articles/PArticles";
+import AccountArticles from "./Articles/AccountArticles";
 import PMatchList from "./Matches/PMatchList";
 import Preferences from "./preferences/preferences";
 interface PMatchListProps {
@@ -22,11 +22,13 @@ const Account = () => {
         },
       });
       const data = await response.json();
-      const preferences = data.preferences || {};
-      setSports(preferences.sports);
-      setTeams(preferences.teams);
-      console.log(preferences, "are succesfully retrieved");
-      console.log(sports, teams);
+      const preferences = data.preferences;
+      if (preferences) {
+        setSports(preferences.sports);
+        setTeams(preferences.teams);
+        console.log(preferences, "are succesfully retrieved");
+        console.log(sports, teams);
+      }
     } catch (error) {
       console.log("Error fetching preferences:", error);
     }
@@ -53,7 +55,7 @@ const Account = () => {
         </h2>
       </div>
       <div className="">
-        <PArticles psports={sports} />
+        <AccountArticles psports={sports} pteams={teams} />
       </div>
     </>
   );

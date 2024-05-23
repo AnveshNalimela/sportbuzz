@@ -1,8 +1,8 @@
 import { Tab } from "@headlessui/react";
 import React from "react";
 
-const PSportsList = ({ psports }) => {
-  const sports = Object.keys(psports);
+const PreferredSportList = ({ sports }) => {
+  console.log(sports);
   return (
     <div>
       {sports.map((sport) => (
@@ -17,4 +17,4 @@ const PSportsList = ({ psports }) => {
   );
 };
 
-export default PSportsList;
+export default PreferredSportList;
