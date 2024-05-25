@@ -8,7 +8,7 @@ const MatchList = React.lazy(() => import("./matches/MatchList"));
 const Home = () => {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between text-center text-md-left px-5">
         <h2 className="text-2xl font-bold tracking-tight text-slate-700">
           Live Matches
         </h2>
@@ -19,8 +19,8 @@ const Home = () => {
         </Suspense>
       </ErrorBoundary>
 
-      <div className="flex justify-between">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-700">
+      <div className="flex justify-between text-center text-md-left px-5">
+        <h2 className=" text-2xl font-bold tracking-tight text-slate-700">
           Trending Articles
         </h2>
       </div>

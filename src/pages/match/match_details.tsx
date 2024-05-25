@@ -28,9 +28,12 @@ const MatchDetails = () => {
 
         <div className="scorecard bg-green-200 rounded p-4">
           <p className="text-center text-white text-xl font-bold"> Scorecard</p>
-          <div className="mt-4 grid grid-cols-2 gap-2">
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
             {Object.entries(match.score).map(([team, score]) => (
-              <div className="text-center bg-cyan-300 text-zinc-800 px-4 py-2 rounded hover:bg-zinc-400">
+              <div
+                className="text-center bg-cyan-300 text-zinc-800 px-4 py-2 rounded hover:bg-zinc-400"
+                key={team}
+              >
                 <p className="text-2xl text-center font-semibold">{team}</p>
                 <p className="text-xl text-center font-bold">{score}</p>
               </div>

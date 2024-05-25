@@ -23,7 +23,7 @@ const ArticlesList: React.FC = () => {
     <div className="w-full grid  grid-cols-1 border rounded border-gray-200 mt-2">
       <div className="flex py-4 px-3 ">
         <TabGroup>
-          <TabList className="flex gap-6 ">
+          <TabList className="flex flex-col lg:flex-row gap-6 ">
             <Tab className="rounded-full py-1 px-3 text-lg/6 font-semibold text-gray-600 focus:outline-none data-[selected]:bg-green-300 data-[hover]:bg-green-400  data-[selected]:data-[hover]:bg-gray-300 data-[focus]:outline-1 data-[focus]:outline-white">
               Your News
             </Tab>

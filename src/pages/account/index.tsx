@@ -36,7 +36,7 @@ const Account = () => {
   return (
     <>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-700 mt-3">
+        <h2 className="lg:text-left text-center text-2xl font-bold tracking-tight text-slate-700 mt-3 ml-3">
           Live Matches
         </h2>
 
@@ -59,7 +59,7 @@ const Account = () => {
         </Suspense>
       </ErrorBoundary>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-700 mb-2">
+        <h2 className="text-center text-md-left text-2xl font-bold tracking-tight text-slate-700 mb-2 ml-3">
           Trending Articles
         </h2>
       </div>

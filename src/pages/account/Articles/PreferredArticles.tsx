@@ -25,7 +25,7 @@ const PreferredArticles = ({ sports, teams }) => {
     <div className="w-full grid grid-cols-1">
       <div className="flex ">
         <TabGroup>
-          <TabList className="flex gap-4 mt-2 ml-5">
+          <TabList className="flex flex flex-col lg:flex-row gap-6 mt-2 ml-5">
             <Tab className="rounded-full py-1 px-3 text-lg/6 font-semibold text-gray-600 focus:outline-none data-[selected]:bg-green-300 data-[hover]:bg-green-400  data-[selected]:data-[hover]:bg-gray-300 data-[focus]:outline-1 data-[focus]:outline-white">
               Your News
             </Tab>

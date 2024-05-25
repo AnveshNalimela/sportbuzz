@@ -42,7 +42,7 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
     <>
       <Button
         onClick={open}
-        className="rounded-md bg-gray-500 py-2 px-4 text-lg font-medium text-white focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white w-1/4 h-10 ml-10"
+        className="rounded-md bg-gray-500 py-2 px-4 text-lg font-medium text-white focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white w-1/4 h-10 ml-10 overflow:hidden mr-10 w-fit"
       >
         Preferences
       </Button>
