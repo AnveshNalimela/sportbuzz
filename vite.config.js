@@ -11,20 +11,7 @@ export default defineConfig({
         enabled: true // For making sure that the PWA is testable from the Local dev environment
       },
       registerType: 'autoUpdate',
-      manifest: {
-        name: "SportBuzz application",
-        short_name: "SportBuzz",
-        icons: [
-          {
-            "src": "/public/stadium.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/x-icon"
-          },
 
-
-        ],
-        theme_color: '#AAF',
-      },
     }),
   ],
   esbuild: {
