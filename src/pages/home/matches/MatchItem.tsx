@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import completed from "../../../assets/images/completed.png";
 import football from "../../../assets/images/football.png";
-import live from "../../../assets/images/live.png";
+import live from "../../../assets/images/livew.gif";
 import reload from "../../../assets/images/reload.png";
 import { API_ENDPOINT } from "../../../config/constants";
 import "./styles.css";
@@ -103,11 +103,12 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
         <div className="flex justify-around text-xs text-zinc-700">
           {match.isRunning ? (
             <div className="flex justify-around ">
-              <img src={live} alt="Running" className="w-20 h-15 " />
-              <button onClick={handleRefreshScores}>
+              <img src={live} alt="Running" className="w-20 h-15 bg-zinc " />
+              <button onClick={handleRefreshScores} type="button" disabled>
                 <img
+                  id="reload"
                   src={reload}
-                  className="h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4 "
+                  className="hover:animate-spin h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4 "
                 />
               </button>
             </div>

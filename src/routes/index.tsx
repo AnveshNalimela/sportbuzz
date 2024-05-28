@@ -21,11 +21,16 @@ const Articles = lazy(() => import("../pages/Articles"));
 const Match = lazy(() => import("../pages/match"));
 const Account = lazy(() => import("../pages/account"));
 const AContainer = lazy(() => import("../pages/account/Acontainer"));
-
+// Get the token from local storage
+const token = localStorage.getItem("authToken");
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/home" replace />,
+    element: token ? (
+      <Navigate to="/home" replace />
+    ) : (
+      <Navigate to="/account" replace />
+    ),
   },
   {
     path: "/signin",
