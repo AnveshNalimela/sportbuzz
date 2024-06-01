@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINT } from "../../config/constants";
 
 const SigninForm: React.FC = () => {
   const navigate = useNavigate();
+  let [msg, setMsg] = useState("");
   const {
     register,
     handleSubmit,
@@ -37,12 +38,15 @@ const SigninForm: React.FC = () => {
       navigate("/account");
     } catch (error) {
       console.error("Sign-in failed:", error);
-      alert("Sign-in failed:");
+      setMsg("Sign-in failed:Due to Invalid username or password");
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="text-red-500 text-sm font-medium text-center my-3">
+        {msg}
+      </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
