@@ -8,7 +8,12 @@ const MatchDetails = () => {
   const navigate = useNavigate();
   console.log(match);
   const goBack = () => {
-    navigate("/account");
+    const token = localStorage.getItem("authToken") ?? "";
+    if (token) {
+      navigate("/account");
+    } else {
+      navigate("/");
+    }
   };
   return (
     <div className="max-w-4xl mx-auto p-4">

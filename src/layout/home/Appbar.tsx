@@ -46,8 +46,8 @@ const Appbar = () => {
                     checked={enabled}
                     onChange={toggleTheme}
                     className={`${
-                      enabled ? "bg-slate-400" : "bg-slate-900"
-                    } relative inline-flex h-[22px] w-[50px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                      enabled ? "bg-blue-400" : "bg-slate-900"
+                    } relative inline-flex h-[22px] w-[50px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75 border-3 `}
                   >
                     <span
                       aria-hidden="true"
@@ -56,7 +56,7 @@ const Appbar = () => {
                       } pointer-events-none inline-block h-[18px] w-[18px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                     />
                   </Switch>
-                  <Menu as="div" className="relative ml-3">
+                  <Menu as="div" className="relative ml-4">
                     <div>
                       <Menu.Button className="rounded-full bg-white p-1 text-gray-600 hover:text-blue-600">
                         <UserPlusIcon className="h-6 w-6 text-gray-900" />
