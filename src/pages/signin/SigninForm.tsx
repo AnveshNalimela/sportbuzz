@@ -35,7 +35,6 @@ const SigninForm: React.FC = () => {
 
       localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/account");
-      alert("Sign-in successful");
     } catch (error) {
       console.error("Sign-in failed:", error);
       alert("Sign-in failed:");

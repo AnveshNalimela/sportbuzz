@@ -69,6 +69,7 @@ const Profile = () => {
 
   function close() {
     setIsOpen(false);
+    setMsg("Prefernces updated Succesfully");
   }
 
   const Update = async (requestbody) => {
@@ -195,6 +196,7 @@ const Profile = () => {
                         </Label>
 
                         <Input
+                          type="password"
                           className={clsx(
                             "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
                             "focus:outline-none focus:ring-2 focus:ring-white/25"
@@ -210,6 +212,7 @@ const Profile = () => {
                         </Label>
 
                         <Input
+                          type="password"
                           className={clsx(
                             "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
                             "focus:outline-none focus:ring-2 focus:ring-white/25"

@@ -20,6 +20,11 @@ const ArticleDetails = () => {
   if (!article) {
     return <div>Article not found!</div>;
   }
+  if (isLoading) {
+    <div className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden dark:bg-zinc-800">
+      Article is Loading..
+    </div>;
+  }
 
   return (
     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden dark:bg-zinc-800">
