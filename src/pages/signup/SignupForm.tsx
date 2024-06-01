@@ -35,8 +35,8 @@ const SignupForm: React.FC = () => {
       }
       console.log("Sign-up successful");
       const responsedata = await response.json();
-      console.log(responsedata.user, responsedata.token);
-      localStorage.setItem("authToken", responsedata.token);
+
+      localStorage.setItem("authToken", responsedata.auth_token);
       localStorage.setItem("userData", JSON.stringify(responsedata.user));
 
       navigate("/account");

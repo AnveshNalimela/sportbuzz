@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import completed from "../../../assets/images/completed.png";
 import football from "../../../assets/images/football.png";
-import live from "../../../assets/images/livew.gif";
+import live from "../../../assets/images/live.png";
 import reload from "../../../assets/images/reload.png";
 import { API_ENDPOINT } from "../../../config/constants";
 import "./styles.css";
@@ -108,7 +108,7 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
                 <img
                   id="reload"
                   src={reload}
-                  className="hover:animate-spin h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4 "
+                  className="onclick:animate-spin h-8 w-8 hover:bg-blue-400 p-1 rounded justify-end ml-4 "
                 />
               </button>
             </div>

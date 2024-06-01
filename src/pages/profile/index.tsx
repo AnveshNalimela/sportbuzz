@@ -29,6 +29,7 @@ const Profile = () => {
   let [sports, setSports] = useState({});
   let [teams, setTeams] = useState({});
   const navigate = useNavigate();
+  let [msg, setMsg] = useState("Welcome to SportBuzz Application");
 
   const fetchPrefernces = async () => {
     const token = localStorage.getItem("authToken") ?? "";
@@ -87,6 +88,7 @@ const Profile = () => {
         throw new Error(`Failed to update password: ${errorMessage}`);
       }
       console.log("Password updated successfully");
+      setMsg("Password updated successfully");
       pclose();
     } catch (error) {
       console.error("Error updating password:", error.message);
@@ -119,9 +121,12 @@ const Profile = () => {
       <>
         <div className="bg-blue-200 min-h-screen flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl">
+            <div className="mt-4 text-lg text-green-600 font-semibold  sm:mt-0 mb-2 text-center">
+              {msg}
+            </div>
             <div className="flex flex-col items-center sm:flex-row sm:justify-between">
               <div className="flex flex-col items-center sm:items-start">
-                <div className="w-24 h-24 mb-3 sm:mb-0 sm:mr-4">
+                <div className="w-24 h-24 mb-3 sm:mb-0 sm:mr-4 text-center">
                   <img
                     className="rounded-full border-4 border-blue-300"
                     src={profile}
@@ -135,7 +140,7 @@ const Profile = () => {
                   <p className="text-lg font-bold text-gray-600">{email}</p>
                 </div>
               </div>
-              <div className="mt-4 sm:mt-0"></div>
+
               <div className="mt-6 flex flex-col items-center sm:flex-row sm:justify-between">
                 <Button
                   onClick={popen}
