@@ -1,4 +1,5 @@
 SportBuzz is a dynamic web application designed to cater to sports enthusiasts by providing real-time match scores and up-to-date sports news articles. This platform not only keeps users informed about their favourite sports and teams but also offers a personalized experience by allowing users to manage their preferences and profile settings.
+
 ![image](https://github.com/AnveshNalimela/sportbuzz/assets/151531961/72a8a210-5f82-4189-bda3-272577845b9f)
 
 Features:
@@ -20,6 +21,7 @@ Features:
 5.	Preferences:
 •	Users can select and manage their favorite sports and teams.
 •	Personalized content based on user preferences.
+
 ![image](https://github.com/AnveshNalimela/sportbuzz/assets/151531961/84be4f43-4ae5-4333-a533-1f8b46b75e3c)
 
 
@@ -44,6 +46,7 @@ Features:
 •	Ensures the application is accessible and usable on desktops, tablets, and mobile devices.
 
 ![image](https://github.com/AnveshNalimela/sportbuzz/assets/151531961/27729ce4-d42f-4fba-9a54-bbd0e11135ea)
+
 ![image](https://github.com/AnveshNalimela/sportbuzz/assets/151531961/44da313a-edf9-4508-bc5c-e83978d4cbd6)
 
 10.	Progressive Web App (PWA) Features:
@@ -63,3 +66,6 @@ Technologies and Libraries:
 	TypeScript: For static typing, ensuring better code quality and maintainability.
 	ESLint: For linting and maintaining code quality.
 	Vite Plugin PWA: For adding PWA features.
+
+Link to Live application:https://sportbuz.netlify.app
+Demo video Link:https://www.loom.com/share/6a654488673f4d00af5a16cd2e7fc356?sid=047787b3-e90b-4875-bee0-3d9be93fb70f
