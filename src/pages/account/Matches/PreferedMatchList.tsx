@@ -47,6 +47,8 @@ export default function PreferedMatchList({ psports, pteams }) {
         // Check if sportName exists in the sports array
         const sportExists = sports.some((sport) => sport === match.sportName);
         // Check if both teams exist in the teams array
+        //feedback:Prefernces matches are updated based selected teams
+        //Matches are updated based on both selected teams and sports
         const teamExists1 = teams.some((team) => team === match.teams[0].name);
         const teamExists2 = teams.some((team) => team === match.teams[1].name);
 

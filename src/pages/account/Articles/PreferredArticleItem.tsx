@@ -15,8 +15,14 @@ const PreferredArticleItem = ({ sports, teams, selected }) => {
   // Step 2: Take the first five elements from the sorted array
 
   if (selected) {
+    // Feedback: Articles are early filtered only based on sports. Now, team-based filtering is also enabled.
+    // filteredArticles = articles.filter(
+    //   (article) => article.sport.name === selected
+    // );
     filteredArticles = articles.filter(
-      (article) => article.sport.name === selected
+      (article) =>
+        article.sport.name === selected ||
+        article.teams.some((team) => team.name === selected)
     );
   } else {
     filteredArticles = sortedArticles.filter((article) => {

@@ -6,17 +6,21 @@ import { fetchMatches } from "../../context/matches/actions";
 import { useMatchesDispatch } from "../../context/matches/context";
 import { fetchSports } from "../../context/sports/actions";
 import { useSportsDispatch } from "../../context/sports/context";
+import { fetchTeams } from "../../context/teams/actions";
+import { useTeamsDispatch } from "../../context/teams/context";
 
 const Container = () => {
   const MatchesDispatch = useMatchesDispatch();
   const ArticlesDispatch = useArticlesDispatch();
   const SportsDispatch = useSportsDispatch();
+  const TeamsDispatch = useTeamsDispatch();
 
   useEffect(() => {
     fetchMatches(MatchesDispatch);
     fetchArticles(ArticlesDispatch);
     fetchSports(SportsDispatch);
-  }, [MatchesDispatch, ArticlesDispatch, SportsDispatch]);
+    fetchTeams(TeamsDispatch);
+  }, [MatchesDispatch, ArticlesDispatch, SportsDispatch, TeamsDispatch]);
   return <Outlet />;
 };
 

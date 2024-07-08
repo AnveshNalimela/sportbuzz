@@ -1,13 +1,19 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import React, { useState } from "react";
 import { useSportsState } from "../../../context/sports/context";
+import { useTeamsState } from "../../../context/teams/context";
 import ArticleListBySport from "./ArticleListBySport";
 import ArticleListItems from "./ArticleListItems";
 import SportListItems from "./SportListItems";
 
 const ArticlesList: React.FC = () => {
   const state = useSportsState();
+  const teamstate = useTeamsState();
+  console.log(teamstate);
   const { sports, isLoading, isError, errorMessage } = state;
+  console.log(sports);
+  const { teams } = teamstate;
+  console.log("gfg", teamstate.teams);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSport, setSelectedSport] = useState(null);
 
@@ -59,6 +65,7 @@ const ArticlesList: React.FC = () => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
+                  <h2>Filter Based on Sports</h2>
                   <div className="py-1" role="none">
                     {sports.map((sport) => (
                       <div

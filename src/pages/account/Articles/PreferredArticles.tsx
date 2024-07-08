@@ -1,6 +1,7 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { default as React, useState } from "react";
 import { useSportsState } from "../../../context/sports/context";
+import { useTeamsState } from "../../../context/teams/context";
 import ArticleListBySport from "./ArticleListBySport";
 import PreferredArticleItem from "./PreferredArticleItem";
 import PreferredSportList from "./PreferredSportList";
@@ -8,16 +9,21 @@ import "./style.css";
 
 const PreferredArticles = ({ sports, teams }) => {
   const state = useSportsState();
+  //Feedback:Intially teams state not defined later added to access the teams list to filter
+  const teamState = useTeamsState();
 
   console.log(sports, teams);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSport, setSelectedSport] = useState(null);
+  //Selected sport was replaced by selected
+  //const [selectedSport, setSelectedSport] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const handleSportClick = (sport) => {
-    setSelectedSport(sport.name);
+  //Intailly function was defined for only sports now a made common for both sports and teams
+  const handleSportClick = (item) => {
+    setSelected(item.name);
     setIsOpen(false); // Close the dropdown after selecting a sport
   };
 
@@ -39,7 +45,7 @@ const PreferredArticles = ({ sports, teams }) => {
                   aria-haspopup="true"
                   onClick={toggleDropdown}
                 >
-                  {selectedSport ? selectedSport : "Filter"}
+                  {selected ? selected : "Filter"}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5 mt-1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,6 +67,7 @@ const PreferredArticles = ({ sports, teams }) => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
+                  <h2 className="text-xl font-semibold">Based on Sports</h2>
                   <div className="py-1" role="none">
                     {state.sports.map((sport) => (
                       <div
@@ -70,6 +77,19 @@ const PreferredArticles = ({ sports, teams }) => {
                         role="menuitem"
                       >
                         {sport.name}
+                      </div>
+                    ))}
+                  </div>
+                  <h2 className="text-xl font-semibold">Based on Teams</h2>
+                  <div className="py-1" role="none">
+                    {teamState.teams.map((team) => (
+                      <div
+                        key={team.id}
+                        onClick={() => handleSportClick(team)}
+                        className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-100 border-b border-zinc-300 cursor-pointer"
+                        role="menuitem"
+                      >
+                        {team.name}
                       </div>
                     ))}
                   </div>
@@ -84,7 +104,7 @@ const PreferredArticles = ({ sports, teams }) => {
               <PreferredArticleItem
                 sports={sports}
                 teams={teams}
-                selected={selectedSport}
+                selected={selected}
               />
             </TabPanel>
             {sports.map((sport) => (
