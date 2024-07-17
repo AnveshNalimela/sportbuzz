@@ -11,8 +11,8 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "noEmit": true, // or "emitDeclarationOnly": true,
-    "allowImportingTsExtensions": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["src", "vite-env.d.ts"]
 }

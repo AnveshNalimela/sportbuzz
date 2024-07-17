@@ -41,15 +41,12 @@ export default defineConfig({
             "sizes": "512x512",
             "purpose": "any maskable" // Icon format that ensures that your PWA icon looks great on all Android devices
           }
-
-
         ],
         theme_color: '#AAF',
       },
-
     }),
   ],
   esbuild: {
     target: 'es2020', // or 'esnext', 'es2022', etc.
   },
-})
+});

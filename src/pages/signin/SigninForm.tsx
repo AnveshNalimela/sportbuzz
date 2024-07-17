@@ -2,19 +2,23 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINT } from "../../config/constants";
+import { withHandleSubmit } from "../../decorators/handleSubmit";
+import { withLog } from "../../decorators/log";
+
+interface Inputs {
+  email: string;
+  password: string;
+}
 
 const SigninForm: React.FC = () => {
   const navigate = useNavigate();
-  let [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  type Inputs = {
-    email: string;
-    password: string;
-  };
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { email, password } = data;
 
@@ -30,20 +34,19 @@ const SigninForm: React.FC = () => {
       }
 
       console.log("Sign-in successful");
-      const data = await response.json();
+      const responseData = await response.json();
 
-      localStorage.setItem("authToken", data.auth_token);
-
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      localStorage.setItem("authToken", responseData.auth_token);
+      localStorage.setItem("userData", JSON.stringify(responseData.user));
       navigate("/account");
     } catch (error) {
       console.error("Sign-in failed:", error);
-      setMsg("Sign-in failed:Due to Invalid username or password");
+      setMsg("Sign-in failed: Invalid username or password");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(withHandleSubmit(withLog(onSubmit)))}>
       <div className="text-red-500 text-sm font-medium text-center my-3">
         {msg}
       </div>

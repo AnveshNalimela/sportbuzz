@@ -1,7 +1,5 @@
 import React, { Suspense } from "react";
-
 import ErrorBoundary from "../../components/ErrorBoundary";
-
 const ArticlesList = React.lazy(() => import("./articles/ArticlesList"));
 const MatchList = React.lazy(() => import("./matches/MatchList"));
 
