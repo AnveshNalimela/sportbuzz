@@ -22,10 +22,10 @@ jobs:
           rm -f package-lock.json
           npm install
 
-      - name: Run Vitest tests
+      - name: Run Vitest(unit) tests
         run: npm run vitest:test:ci
 
-      - name: Run Cypress tests
+      - name: Run Cypress(integration) tests
         uses: cypress-io/github-action@v5
         with:
           build: npm run build
@@ -51,10 +51,10 @@ jobs:
           rm -f package-lock.json
           npm install
 
-      - name: Build
+      - name: Build(build the application)
         run: npm run build
 
-      - name: Start dev server
+      - name: Start dev server(start the application in devlopement server)
         run: |
           npm run dev &
           echo $! > ./dev-server.pid
