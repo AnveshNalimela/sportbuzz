@@ -51,4 +51,15 @@ jobs:
           rm -f package-lock.json
           npm install
 
-      - name:
+      - name: Build
+        run: npm run build
+
+      - name: Start dev server
+        run: |
+          npm run dev &
+          echo $! > ./dev-server.pid
+
+      # Add deployment steps here if needed
+
+      - name: Stop dev server
+        run: kill $(cat ./dev-server.pid)
