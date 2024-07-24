@@ -1,5 +1,3 @@
-// src/context/projects/context.tsx
-
 import React, { createContext, useContext, useReducer } from "react";
 import { ArticleActions, ArticleState, initialState, reducer } from "./reducer";
 const ArticleStateContext = createContext<ArticleState | undefined>(undefined);

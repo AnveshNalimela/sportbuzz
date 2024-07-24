@@ -9,7 +9,12 @@
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "webpack-dev": "webpack serve --mode development",
-    "webpack-build": "webpack --mode production"
+    "webpack-build": "webpack --mode production",
+    "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run",
+    "test:unit": "jest --watch",
+    "test:unit:ci": "jest",
+    "test:unit:coverage": "jest --silent --watchAll=false --coverage"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.1",
