@@ -34,7 +34,7 @@ describe("fetchMatches function unit test suite", () => {
   });
 
   it("should dispatch FETCH_MATCHES_REQUEST and FETCH_MATCHES_FAILURE on fetch failure", async () => {
-    (fetch as any).mockRejectedValueOnce(new Error("Network Error"));
+    (fetch as any).mockRejectedValueOnce({});
 
     await fetchMatches(dispatch);
 
@@ -74,7 +74,7 @@ describe("fetchMatchById unit tests", () => {
   it("should dispatch FETCH_MATCH_REQUEST and FETCH_MATCH_FAILURE on fetch failure", async () => {
     const mockMatchId = 1;
 
-    (fetch as any).mockRejectedValueOnce(new Error("Network Error"));
+    (fetch as any).mockRejectedValueOnce({});
 
     await fetchMatchById(dispatch, mockMatchId);
 
@@ -114,7 +114,7 @@ describe("fetchArticleById unit test suite", () => {
   it("should dispatch FETCH_ARTICLE_REQUEST and FETCH_ARTICLE_FAILURE on fetch failure", async () => {
     const mockArticleId = 1;
 
-    (fetch as any).mockRejectedValueOnce(new Error("Network Error"));
+    (fetch as any).mockRejectedValueOnce({});
 
     await fetchArticleById(dispatch, mockArticleId);
 
@@ -151,7 +151,7 @@ describe("fetchTeams unit test suite", () => {
   });
 
   it("should dispatch FETCH_TEAMS_REQUEST and FETCH_TEAMS_FAILURE on fetch failure", async () => {
-    (fetch as any).mockRejectedValueOnce(new Error("Network Error"));
+    (fetch as any).mockRejectedValueOnce({});
 
     await fetchTeams(dispatch);
 
@@ -200,7 +200,7 @@ describe("fetchSports action creator unit test suite", () => {
   });
 
   it("dispatches FETCH_SPORTS_REQUEST and FETCH_SPORTS_FAILURE on failed fetch", async () => {
-    mockFetch.mockRejectedValueOnce(new Error("Fetch error"));
+    mockFetch.mockRejectedValueOnce({});
 
     await fetchSports(mockDispatch);
 
