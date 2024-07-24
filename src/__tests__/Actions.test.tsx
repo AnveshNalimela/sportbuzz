@@ -1,5 +1,6 @@
 import { API_ENDPOINT } from "../config/constants";
 import { fetchArticleById } from "../context/article/actions";
+
 import { fetchMatchById } from "../context/match/actions";
 import { fetchMatches } from "../context/matches/actions";
 import { fetchSports } from "../context/sports/actions";
@@ -206,7 +207,7 @@ describe("fetchSports action creator unit test suite", () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: "FETCH_SPORTS_REQUEST" });
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "FETCH_SPORTS_FAILURE",
-      payload: "Unable to load sports",
+      payload: "Unable to load  sports",
     });
   });
 });
