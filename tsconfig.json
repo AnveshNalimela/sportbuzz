@@ -1,18 +1,31 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "types": ["cypress", "node"],
+    "useDefineForClassFields": true,
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
+
+    "skipLibCheck": true,
     "jsx": "react",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
+
     "allowJs": true,
-    "skipLibCheck": true,
+
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
-  "include": ["src", "vite-env.d.ts", "jest.setup.ts", "custom.d.ts"]
+  "include": [
+    "src",
+    "vite-env.d.ts",
+    "jest.setup.ts",
+    "custom.d.ts",
+    "cypress/**/*.ts"
+  ]
 }

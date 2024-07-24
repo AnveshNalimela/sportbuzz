@@ -7,7 +7,7 @@ import { fetchSports } from "../context/sports/actions";
 import { fetchTeams } from "../context/teams/actions";
 
 // Mock the global fetch function
-global.fetch = jest.fn();
+globalThis.fetch = jest.fn();
 
 describe("fetchMatches function unit test suite", () => {
   const dispatch = jest.fn();
@@ -165,7 +165,7 @@ describe("fetchTeams unit test suite", () => {
 
 describe("fetchSports action creator unit test suite", () => {
   const mockDispatch = jest.fn();
-  const mockFetch = jest.spyOn(global, "fetch");
+  const mockFetch = jest.spyOn(globalThis, "fetch");
 
   beforeEach(() => {
     jest.clearAllMocks();

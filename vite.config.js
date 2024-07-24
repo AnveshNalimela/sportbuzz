@@ -1,7 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from "vite-plugin-pwa";
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -47,6 +46,18 @@ export default defineConfig({
     }),
   ],
   esbuild: {
-    target: 'es2022', // or 'esnext', 'es2022', etc.
+    target: 'esnext', // or 'esnext', 'es2022', etc.
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    coverage: {
+      provider: 'c8', // or 'istanbul' if you prefer
+      reporter: ['text', 'html'], // Choose the reporters you want
+      all: true,
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['node_modules/', 'test/'],
+    },
   },
 });
