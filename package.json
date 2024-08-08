@@ -19,6 +19,7 @@
     "vitest:test:ci": "vitest run"
   },
   "dependencies": {
+    "'": "file:testing-library/jest-dom/extend-expect",
     "@headlessui/react": "^2.0.1",
     "@heroicons/react": "^2.1.3",
     "@tailwindcss/line-clamp": "^0.4.4",

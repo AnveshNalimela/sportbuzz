@@ -31,35 +31,3 @@ jobs:
           build: npm run build
           start: npm run dev
           wait-on: "http://localhost:5173"
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules
-          rm -f package-lock.json
-          npm install
-
-      - name: Build(build the application)
-        run: npm run build
-
-      - name: Start dev server(start the application in devlopement server)
-        run: |
-          npm run dev &
-          echo $! > ./dev-server.pid
-
-      # Add deployment steps here if needed
-
-      - name: Stop dev server
-        run: kill $(cat ./dev-server.pid)

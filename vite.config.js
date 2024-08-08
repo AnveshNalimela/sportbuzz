@@ -51,13 +51,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
+    setupFiles: './src/__tests__/setupTests.ts',
     coverage: {
       provider: 'c8', // or 'istanbul' if you prefer
       reporter: ['text', 'html'], // Choose the reporters you want
       all: true,
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['node_modules/', 'test/'],
+      exclude: ['node_modules/', '__tests__/'],
     },
   },
 });
