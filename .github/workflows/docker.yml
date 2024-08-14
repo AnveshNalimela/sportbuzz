@@ -30,7 +30,7 @@ jobs:
       - name: Report errors to Slack/Discord
         if: failure()
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Linting failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Linting failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
 
   testing:
     name: Test
@@ -62,7 +62,7 @@ jobs:
       - name: Report errors to Slack/Discord
         if: failure()
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Testing failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Testing failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
 
   build-docker-image:
     name: Build Docker Image
@@ -94,7 +94,7 @@ jobs:
       - name: Report errors to Slack/Discord
         if: failure()
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Docker image build failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Docker image build failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
 
   deploy:
     name: Deploy Application
@@ -119,4 +119,4 @@ jobs:
       - name: Report errors to Slack/Discord
         if: failure()
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Docker image deploy failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Docker image deploy failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
