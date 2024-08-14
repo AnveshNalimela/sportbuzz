@@ -1,5 +1,5 @@
-# .github/workflows/ci-cd-pipeline.yml
-name: CI/CD Pipeline
+# .github/workflows/ci.yml
+name: CI Pipeline
 
 on:
   push:
@@ -10,10 +10,16 @@ on:
       - main
 
 jobs:
-  Stage 1: Code Validation
-  lint:
-    name: Lint Codebase
+  lint-and-test:
+    name: Lint and Test
     runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,55 +27,40 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run ESLint
+      - name: Run linter
         run: npm run lint
 
-  Stage 2: Run Tests
-  test:
-    name: Run Tests
+      - name: Run tests
+        run: npm test
+
+  build-docker-image:
+    name: Build Docker Image
     runs-on: ubuntu-latest
+    needs: lint-and-test
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
         with:
-          node-version: "18"
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sportbuzz:${{ github.sha }} .
 
-      - name: Run Tests
-        run: npm run vitest:test
+      - name: Push Docker image to Docker Hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/sportbuzz:${{ github.sha }}
 
-build-and-push:
-  name: Build and Push Docker Image
-  runs-on: ubuntu-latest
+      - name: Tag the Docker image with 'latest'
+        run: docker tag ${{ secrets.DOCKER_USERNAME }}/sportbuzz:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Set up QEMU (for multi-platform builds, if needed)
-      uses: docker/setup-qemu-action@v3
-
-    - name: Build Docker Image
-      run: |
-        docker buildx build --platform linux/amd64,linux/arm64 \
-        -t ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest \
-        --push .
+      - name: Push 'latest' Docker image to Docker Hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest
