@@ -29,7 +29,10 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 
 # Expose the port that `serve` will use
-EXPOSE 5000
+COPY .env .
+
+# Expose the port that `serve` will use
+EXPOSE ${PORT:-5000}
 
 # Start the server
-CMD ["serve", "-s", "dist", "-l", "5000"]
+CMD serve -s dist -l ${PORT:-5000}
