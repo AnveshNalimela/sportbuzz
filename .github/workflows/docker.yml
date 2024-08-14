@@ -99,4 +99,4 @@ jobs:
           docker run -d -p 5000:5000 --name sportbuzz ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest
 
       - name: Verify application is running
-        run: curl --fail http://localhost:3000 || exit 1
+        run: curl --fail http://localhost:5000 || exit 1
