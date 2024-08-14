@@ -15,7 +15,6 @@ export const fetchArticleById = async (dispatch: any, articleId: number) => {
 
     dispatch({ type: "FETCH_ARTICLE_SUCCESS", payload: data });
   } catch (error) {
-    console.log("Error fetching articles with id:", error);
     dispatch({
       type: "FETCH_ARTICLE_FAILURE",
       payload: "Unable to load  articles with id",

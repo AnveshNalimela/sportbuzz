@@ -1,7 +1,6 @@
 // src/context/projects/actions.ts
 import { API_ENDPOINT } from "../../config/constants";
 export const fetchMatches = async (dispatch: any) => {
-  const token = localStorage.getItem("authToken") ?? "";
 
   try {
     dispatch({ type: "FETCH_MATCHES_REQUEST" });
@@ -15,7 +14,6 @@ export const fetchMatches = async (dispatch: any) => {
 
     dispatch({ type: "FETCH_MATCHES_SUCCESS", payload: data.matches });
   } catch (error) {
-    console.log("Error fetching matches:", error);
     dispatch({
       type: "FETCH_MATCHES_FAILURE",
       payload: "Unable to load  matches",

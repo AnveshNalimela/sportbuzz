@@ -23,7 +23,7 @@ jobs:
           npm install
 
       - name: Run Vitest(unit) tests
-        run: npm run vitest:test:ci
+        run: npm run vitest:test
 
       - name: Run Cypress(integration) tests
         uses: cypress-io/github-action@v5

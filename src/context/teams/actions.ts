@@ -16,7 +16,6 @@ export const fetchTeams = async (dispatch: any) => {
 
     dispatch({ type: "FETCH_TEAMS_SUCCESS", payload: data });
   } catch (error) {
-    console.log("Error fetching teams:", error);
     dispatch({
       type: "FETCH_TEAMS_FAILURE",
       payload: "Unable to load teams",
