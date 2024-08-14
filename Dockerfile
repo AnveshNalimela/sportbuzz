@@ -28,7 +28,7 @@ WORKDIR /app
 # Copy the build output from the previous stage
 COPY --from=build /app/dist ./dist
 
-# Expose the port that `serve` will use
+# copy env varibales
 COPY .env .
 
 # Expose the port that `serve` will use
