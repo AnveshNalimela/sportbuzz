@@ -113,6 +113,9 @@ jobs:
           docker rm sportbuzz || true
           docker run -d -p 5000:5000 --name sportbuzz ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest
 
+      - name: Wait for application to start
+        run: sleep 10
+
       - name: Verify application is running
         run: curl --fail http://localhost:5000 || exit 1
 
