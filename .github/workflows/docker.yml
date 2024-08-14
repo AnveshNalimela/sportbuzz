@@ -10,15 +10,11 @@ on:
       - main
 
 jobs:
-  lint-and-test:
-    name: Lint and Test
+  linting:
+    name: Lint
     runs-on: ubuntu-latest
 
-    services:
-      mongo:
-        image: mongo:latest
-        ports:
-          - 27017:27017
+   
 
     steps:
       - name: Checkout code
@@ -35,8 +31,38 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Run tests
+
+
+
+
+    test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
+          npm install
+
+      - name: Run Vitest(unit) tests
         run: npm run vitest:test
+
+      - name: Run Cypress(integration) tests
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm run dev
+          wait-on: "http://localhost:5175"
+
+
 
   build-docker-image:
     name: Build Docker Image
@@ -64,3 +90,4 @@ jobs:
 
       - name: Push 'latest' Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/sportbuzz:latest
+
