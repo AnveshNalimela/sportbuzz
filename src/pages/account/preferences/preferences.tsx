@@ -11,7 +11,7 @@ import SportList from "./SportList";
 import TeamList from "./TeamList";
 
 export default function Preferences({ fetchPrefernces, psports, pteams }) {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   let psportsValue, pteamsValue;
 
   function open() {

@@ -22,14 +22,14 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-  let [PisOpen, setPIsOpen] = useState(false);
-  let [isOpen, setIsOpen] = useState(false);
+  const [PisOpen, setPIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [current_password, setCurrentPassword] = useState("");
   const [new_password, setNewPassword] = useState("");
-  let [sports, setSports] = useState({});
-  let [teams, setTeams] = useState({});
+  const [sports, setSports] = useState({});
+  const [teams, setTeams] = useState({});
   const navigate = useNavigate();
-  let [msg, setMsg] = useState("Welcome to SportBuzz Application");
+  const [msg, setMsg] = useState("Welcome to SportBuzz Application");
 
   const fetchPrefernces = async () => {
     const token = localStorage.getItem("authToken") ?? "";

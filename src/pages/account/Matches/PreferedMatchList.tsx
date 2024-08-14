@@ -31,7 +31,7 @@ export default function PreferedMatchList({ psports, pteams }) {
     const sports = Object.keys(psports);
     const teams = Object.keys(pteams);
     if (sports.length == 0 && teams.length == 0) {
-      let recentMatches = sortedMatches.slice(0, 4);
+      const recentMatches = sortedMatches.slice(0, 4);
       return (
         <>
           <h2 className="text-red-500 text-center font-semibold py-10">
@@ -56,7 +56,7 @@ export default function PreferedMatchList({ psports, pteams }) {
         return sportExists || teamExists1 || teamExists2;
       });
       // Display the first five matches from the filtered array
-      let recentMatches = filteredMatches.slice(0, 5);
+      const recentMatches = filteredMatches.slice(0, 5);
       console.log(recentMatches);
       return (
         <>
@@ -67,7 +67,7 @@ export default function PreferedMatchList({ psports, pteams }) {
       );
     }
   } else {
-    let recentMatches = sortedMatches.slice(0, 4);
+    const recentMatches = sortedMatches.slice(0, 4);
     return (
       <>
         <h2 className="text-red-500 text-center font-semibold py-10">

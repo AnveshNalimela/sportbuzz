@@ -6,8 +6,8 @@ const PMatchList = React.lazy(() => import("./Matches/PMatchList"));
 const Preferences = React.lazy(() => import("./preferences/preferences"));
 
 const Account = () => {
-  let [sports, setSports] = useState({});
-  let [teams, setTeams] = useState({});
+  const [sports, setSports] = useState({});
+  const [teams, setTeams] = useState({});
   const fetchPrefernces = async () => {
     const token = localStorage.getItem("authToken") ?? "";
     try {
