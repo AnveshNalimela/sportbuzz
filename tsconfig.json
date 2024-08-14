@@ -5,14 +5,11 @@
     "types": ["cypress", "node"],
     "useDefineForClassFields": true,
     "lib": ["esnext", "DOM", "DOM.Iterable"],
-
     "skipLibCheck": true,
     "jsx": "react",
     "moduleResolution": "node",
     "esModuleInterop": true,
-
     "allowJs": true,
-
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,

@@ -5,10 +5,14 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [
     react(),
+
+
+
     VitePWA({
       devOptions: {
         enabled: true // For making sure that the PWA is testable from the Local dev environment
       },
+
       registerType: 'autoUpdate',
       manifest: {
         name: "SportBuzz application",
@@ -43,6 +47,7 @@ export default defineConfig({
         ],
         theme_color: '#AAF',
       },
+
     }),
   ],
   esbuild: {
@@ -60,4 +65,10 @@ export default defineConfig({
       exclude: ['node_modules/', '__tests__/'],
     },
   },
+  server: {
+    port: 5175,  // Change this to your desired port
+  },
 });
+
+
+

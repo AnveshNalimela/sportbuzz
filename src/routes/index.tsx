@@ -22,15 +22,12 @@ const Match = lazy(() => import("../pages/match"));
 const Account = lazy(() => import("../pages/account"));
 const AContainer = lazy(() => import("../pages/account/Acontainer"));
 // Get the token from local storage
-const token = localStorage.getItem("authToken");
+const getToken = () => localStorage.getItem("token");
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: token ? (
-      <Navigate to="/home" replace />
-    ) : (
-      <Navigate to="/account" replace />
-    ),
+    element: <Navigate to="/account" replace />,
   },
   {
     path: "/signin",

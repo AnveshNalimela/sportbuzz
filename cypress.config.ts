@@ -5,9 +5,9 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "http://localhost:5173/",
+    baseUrl: "http://localhost:5175/",
   },
   env: {
-    API_ENDPOINT: "https://wd301-capstone-api.pupilfirst.school", // or your actual API endpoint
+    API_ENDPOINT: process.env.VITE_API_ENDPOINT, // or your actual API endpoint
   },
 });
