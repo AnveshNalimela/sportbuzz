@@ -38,5 +38,3 @@ EXPOSE ${PORT:-5000}
 CMD serve -s dist -l ${PORT:-5000}
 
 
-# docker tag local-image:tagname new-repo:tagname
-# docker push new-repo:tagname
