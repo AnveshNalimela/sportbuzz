@@ -123,3 +123,16 @@ jobs:
         if: failure()
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"content":"Docker image deploy failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}
+  netlify-deploy:
+    name: Trigger Netlify Build
+    runs-on: ubuntu-latest
+    needs: build-docker-image
+    steps:
+      - name: Trigger Netlify Build Hook
+        run: |
+          curl -X POST ${{ secrets.deployHook }}
+
+      - name: Report errors to Slack/Discord
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Netlify deployment failed in CI pipeline for commit ${{ github.sha }}. Check the logs for details."}' ${{ secrets.WEBHOOK_URL }}

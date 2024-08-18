@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react';
+import react from 'react';
 import { defineConfig } from 'vite';
 import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
@@ -58,11 +58,11 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/__tests__/setupTests.ts',
     coverage: {
-      provider: 'c8', // or 'istanbul' if you prefer
-      reporter: ['text', 'html'], // Choose the reporters you want
-      all: true,
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['node_modules/', '__tests__/'],
+      provider: 'c8', // or 'v8' if you prefer using the v8 coverage provider
+      reporter: ['text', 'json', 'html'], // You can customize this as needed
+      all: true, // include all files, even if they aren't tested
+      include: ['src/**/*.{js,ts,jsx,tsx}'], // Adjust the file patterns according to your project structure
+      exclude: ['node_modules/', 'dist/', 'dev-dist/', '__tests__/', 'coverage/'], // Exclude unnecessary files
     },
   },
   server: {
