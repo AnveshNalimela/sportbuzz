@@ -11,8 +11,8 @@
     "webpack": "webpack --mode production",
     "cypress:test": "npx cypress run",
     "cypress:open": "npx cypress open",
-    "vitest:test": "vitest run",
-    "vitest:coverage": "npx vitest run --coverage"
+    "vitest:test": "vitest run"
+    
   },
   "dependencies": {
     "@babel/plugin-transform-class-properties": "^7.24.7",
@@ -62,7 +62,6 @@
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "@vitest/coverage-c8": "^0.33.0",
     "autoprefixer": "^10.4.19",
     "cypress": "^13.13.1",
     "dotenv": "^16.4.5",
