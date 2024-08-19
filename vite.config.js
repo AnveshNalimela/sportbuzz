@@ -5,9 +5,6 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [
     react(),
-
-
-
     VitePWA({
       devOptions: {
         enabled: true // For making sure that the PWA is testable from the Local dev environment

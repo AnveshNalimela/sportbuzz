@@ -12,7 +12,6 @@
     "cypress:test": "npx cypress run",
     "cypress:open": "npx cypress open",
     "vitest:test": "vitest run"
-    
   },
   "dependencies": {
     "@babel/plugin-transform-class-properties": "^7.24.7",
@@ -60,7 +59,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^1.0.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.19",
     "cypress": "^13.13.1",
