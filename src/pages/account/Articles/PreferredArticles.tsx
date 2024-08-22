@@ -1,4 +1,5 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { t } from "i18next";
 import { default as React, useState } from "react";
 import { useSportsState } from "../../../context/sports/context";
 import { useTeamsState } from "../../../context/teams/context";
@@ -33,7 +34,7 @@ const PreferredArticles = ({ sports, teams }) => {
         <TabGroup>
           <TabList className="flex flex flex-col lg:flex-row gap-6 mt-2 ml-5">
             <Tab className="rounded-full py-1 px-3 text-lg/6 font-semibold text-gray-600 focus:outline-none data-[selected]:bg-green-300 data-[hover]:bg-green-400  data-[selected]:data-[hover]:bg-gray-300 data-[focus]:outline-1 data-[focus]:outline-white">
-              Your News
+              {t("Your_News")}
             </Tab>
             <div className="relative inline-block text-center mt-1">
               <div>
@@ -45,7 +46,7 @@ const PreferredArticles = ({ sports, teams }) => {
                   aria-haspopup="true"
                   onClick={toggleDropdown}
                 >
-                  {selected ? selected : "Filter"}
+                  {selected ? selected : t("Filter")}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5 mt-1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,9 @@ const PreferredArticles = ({ sports, teams }) => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <h2 className="text-xl font-semibold">Based on Sports</h2>
+                  <h2 className="text-xl font-semibold">
+                    {t("Based_On_Sports")}
+                  </h2>
                   <div className="py-1" role="none">
                     {state.sports.map((sport) => (
                       <div
@@ -80,7 +83,9 @@ const PreferredArticles = ({ sports, teams }) => {
                       </div>
                     ))}
                   </div>
-                  <h2 className="text-xl font-semibold">Based on Teams</h2>
+                  <h2 className="text-xl font-semibold">
+                    {t("Based_On_Teams")}
+                  </h2>
                   <div className="py-1" role="none">
                     {teamState.teams.map((team) => (
                       <div

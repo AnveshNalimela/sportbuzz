@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
@@ -75,7 +76,7 @@ const ArticleListBySport: React.FC<ArticleListBySportProps> = ({
                 className="mt-auto"
               >
                 <button className="bg-slate-500 hover:bg-slate-700 text-white p-2 rounded-lg w-full">
-                  Read more
+                  {t("Read_more")}
                 </button>
               </Link>
             </div>

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React, { Suspense, useEffect, useState } from "react";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import { API_ENDPOINT } from "../../config/constants";
@@ -37,12 +38,12 @@ const Account = () => {
     <>
       <div className="flex justify-between">
         <h2 className="lg:text-left text-center text-2xl font-bold tracking-tight text-slate-700 mt-3 ml-3">
-          Live Matches
+          {t("Live_Matches")}
         </h2>
 
         <ErrorBoundary>
           <Suspense
-            fallback={<div className="suspense-loading">Loading...</div>}
+            fallback={<div className="suspense-loading">{t("load")}</div>}
           >
             <Preferences
               fetchPrefernces={fetchPrefernces}
@@ -54,19 +55,21 @@ const Account = () => {
       </div>
 
       <ErrorBoundary>
-        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+        <Suspense
+          fallback={<div className="suspense-loading">{t("load")}</div>}
+        >
           <PMatchList psports={sports} pteams={teams} />
         </Suspense>
       </ErrorBoundary>
       <div className="flex justify-between">
         <h2 className="text-center text-md-left text-2xl font-bold tracking-tight text-slate-700 mb-2 ml-3">
-          Trending Articles
+          {t("Trending_Articles")}
         </h2>
       </div>
       <div className="">
         <ErrorBoundary>
           <Suspense
-            fallback={<div className="suspense-loading">Loading...</div>}
+            fallback={<div className="suspense-loading">{t("load")}</div>}
           >
             <AccountArticles psports={sports} pteams={teams} />
           </Suspense>

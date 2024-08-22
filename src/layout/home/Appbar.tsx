@@ -1,13 +1,21 @@
 import { Disclosure, Menu, Switch, Transition } from "@headlessui/react";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 import React, { Fragment, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
+import LanguageSelector from "../LanguageSelector";
 
 const userNavigation = [
   { name: "Login", href: "/signin" },
   { name: "Register", href: "/signup" },
+];
+
+const languages = [
+  { id: 1, name: "English" },
+  { id: 2, name: "Italian" },
+  { id: 3, name: "German" },
 ];
 
 const classNames = (...classes: string[]): string =>
@@ -17,6 +25,8 @@ const Appbar = () => {
   const { pathname } = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
+  const { t } = useTranslation();
+
   const toggleTheme = () => {
     let newTheme = "";
     if (theme === "light") {
@@ -42,6 +52,7 @@ const Appbar = () => {
                   </div>
                 </div>
                 <div className="hidden md:flex items-center">
+                  <LanguageSelector />
                   <Switch
                     checked={enabled}
                     onChange={toggleTheme}
@@ -56,6 +67,7 @@ const Appbar = () => {
                       } pointer-events-none inline-block h-[18px] w-[18px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                     />
                   </Switch>
+
                   <Menu as="div" className="relative ml-4">
                     <div>
                       <Menu.Button className="rounded-full bg-white p-1 text-gray-600 hover:text-blue-600">

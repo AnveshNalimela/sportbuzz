@@ -4,6 +4,7 @@ import { Fragment, default as React, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
+import LanguageSelector from "../LanguageSelector";
 
 const userNavigation = [
   { name: "Profile", href: "dashboard/profile" },
@@ -43,6 +44,7 @@ const Appbar = () => {
                   </div>
                 </div>
                 <div className="hidden md:flex items-center">
+                  <LanguageSelector />
                   <Switch
                     checked={enabled}
                     onChange={toggleTheme}

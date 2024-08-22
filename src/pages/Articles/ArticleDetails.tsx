@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useArticleState } from "../../context/article/context";
@@ -18,11 +19,11 @@ const ArticleDetails = () => {
   const { article, isLoading, isError, errorMessage } = state;
 
   if (!article) {
-    return <div>Article not found!</div>;
+    return <div>{t("Article_not_found!")}</div>;
   }
   if (isLoading) {
     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden dark:bg-zinc-800">
-      Article is Loading..
+      {t("Article_is_Loading..")}
     </div>;
   }
 
@@ -64,7 +65,7 @@ const ArticleDetails = () => {
           onClick={GoBack}
           className="text-lg bg-green-300 hover:bg-green-500 px-4 py-1 text-center w-full h-10 rounded mx-1 mt-3"
         >
-          Go Home
+          {t("Go_Home")}
         </button>
       </div>
     </div>

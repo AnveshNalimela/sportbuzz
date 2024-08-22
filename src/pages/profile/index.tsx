@@ -10,6 +10,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import clsx from "clsx";
+import { t } from "i18next";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import profile from "../../assets/images/profile.png";
@@ -29,7 +30,7 @@ const Profile = () => {
   const [sports, setSports] = useState({});
   const [teams, setTeams] = useState({});
   const navigate = useNavigate();
-  const [msg, setMsg] = useState("Welcome to SportBuzz Application");
+  const [msg, setMsg] = useState(t("welcome"));
 
   const fetchPrefernces = async () => {
     const token = localStorage.getItem("authToken") ?? "";
@@ -69,7 +70,7 @@ const Profile = () => {
 
   function close() {
     setIsOpen(false);
-    setMsg("Prefernces updated Succesfully");
+    setMsg(t("Preferencesupdate"));
   }
 
   const Update = async (requestbody) => {
@@ -147,19 +148,19 @@ const Profile = () => {
                   onClick={popen}
                   className="h-10 rounded-md bg-blue-500 py-2 px-4 text-lg font-medium text-white focus:outline-none hover:bg-blue-600 w-full sm:w-auto lg:mr-4 mb-4 sm:mb-0"
                 >
-                  Change Password
+                  {t("Change_Password")}
                 </Button>
                 <Button
                   onClick={open}
                   className="rounded-md bg-green-400 py-2 px-4 text-lg font-medium text-white focus:outline-none hover:bg-green-600 w-full sm:w-auto mb-4 sm:mb-0"
                 >
-                  Preferences
+                  {t("Preferences")}
                 </Button>
                 <Button
                   onClick={goback}
                   className="rounded-md bg-cyan-400 py-2 px-4 text-lg font-medium text-white focus:outline-none hover:bg-cyan-600 w-full sm:w-auto lg:ml-4"
                 >
-                  Back Home
+                  {t("BackHome")}
                 </Button>
               </div>
             </div>
@@ -187,12 +188,12 @@ const Profile = () => {
                       as="h3"
                       className=" font-medium text-lg text-white"
                     >
-                      Password Update
+                      Password {t("update")}
                     </DialogTitle>
                     <form onSubmit={handleSubmit}>
                       <Field>
                         <Label className="text-sm/6 font-medium text-white">
-                          Current Password
+                          {t("curr")}
                         </Label>
 
                         <Input
@@ -208,7 +209,7 @@ const Profile = () => {
                       </Field>
                       <Field>
                         <Label className="text-sm/6 font-medium text-white">
-                          New Password
+                          {t("newpass")}
                         </Label>
 
                         <Input
@@ -227,13 +228,13 @@ const Profile = () => {
                           type="submit"
                           className="inline-flex items-center gap-2 rounded-md bg-white py-1.5 px-3 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-200"
                         >
-                          Update
+                          {t("update")}
                         </Button>
                         <Button
                           className="inline-flex items-center gap-2 rounded-md bg-gray-500 py-1.5 px-3 text-sm/6 font-semibold text-gray-200 shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-600"
                           onClick={pclose}
                         >
-                          X Close
+                          X {t("Close")}
                         </Button>
                       </div>
                     </form>

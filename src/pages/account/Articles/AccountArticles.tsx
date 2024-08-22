@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import ArticlesList from "../../home/articles/ArticlesList";
 import PreferredArticles from "./PreferredArticles";
@@ -17,7 +18,7 @@ const AccountArticles: React.FC<PArticlesProps> = ({ psports, pteams }) => {
       return (
         <div className="border-2 border-slate-100 rounded-lg p-4">
           <h2 className="text-red-500 text-center font-semibold py-5 mb-1">
-            Add Prefernces for Better Experince
+            {t("add")}
           </h2>
           <ArticlesList />
         </div>
@@ -33,7 +34,7 @@ const AccountArticles: React.FC<PArticlesProps> = ({ psports, pteams }) => {
     return (
       <>
         <h2 className="text-red-500 text-center font-semibold py-10 mb-1 border-3">
-          Add Prefernces for Better Experinces
+          {t("add")}
         </h2>
         <ArticlesList />
       </>

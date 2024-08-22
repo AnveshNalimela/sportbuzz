@@ -1,4 +1,5 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { t } from "i18next";
 import React, { useState } from "react";
 import { useSportsState } from "../../../context/sports/context";
 import { useTeamsState } from "../../../context/teams/context";
@@ -9,11 +10,11 @@ import SportListItems from "./SportListItems";
 const ArticlesList: React.FC = () => {
   const state = useSportsState();
   const teamstate = useTeamsState();
-  console.log(teamstate);
+
   const { sports, isLoading, isError, errorMessage } = state;
-  console.log(sports);
+
   const { teams } = teamstate;
-  console.log("gfg", teamstate.teams);
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSport, setSelectedSport] = useState(null);
 
@@ -31,7 +32,7 @@ const ArticlesList: React.FC = () => {
         <TabGroup>
           <TabList className="flex flex-col lg:flex-row gap-6 ">
             <Tab className="rounded-full py-1 px-3 text-lg/6 font-semibold text-gray-600 focus:outline-none data-[selected]:bg-green-300 data-[hover]:bg-green-400  data-[selected]:data-[hover]:bg-gray-300 data-[focus]:outline-1 data-[focus]:outline-white">
-              Your News
+              {t("Your_News")}
             </Tab>
             <div className="relative inline-block text-center mt-1">
               <div>
@@ -43,7 +44,7 @@ const ArticlesList: React.FC = () => {
                   aria-haspopup="true"
                   onClick={toggleDropdown}
                 >
-                  {selectedSport ? selectedSport : "Filter"}
+                  {selectedSport ? selectedSport : t("Filter")}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5 mt-1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +66,7 @@ const ArticlesList: React.FC = () => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <h2>Filter Based on Sports</h2>
+                  <h2>{t("filter_sports")}</h2>
                   <div className="py-1" role="none">
                     {sports.map((sport) => (
                       <div

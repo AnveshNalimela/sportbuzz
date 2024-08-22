@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { useMatchesState } from "../../../context/matches/context";
 import MatchItem from "../../home/matches/MatchItem";
@@ -15,12 +16,12 @@ export default function PreferedMatchList({ psports, pteams }) {
     return endDateB - endDateA; // Sort in descending order
   });
   if (matches === undefined || matches === null) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for loading state
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for error state
@@ -35,7 +36,7 @@ export default function PreferedMatchList({ psports, pteams }) {
       return (
         <>
           <h2 className="text-red-500 text-center font-semibold py-10">
-            Add Prefernces for Better Experinces
+            {t("add")}
           </h2>
           {recentMatches.map((match: any) => (
             <MatchItem key={match.id} matchId={match.id} />
@@ -71,7 +72,7 @@ export default function PreferedMatchList({ psports, pteams }) {
     return (
       <>
         <h2 className="text-red-500 text-center font-semibold py-10">
-          Add Prefernces for Better Experinces
+          {t("add")}
         </h2>
         {recentMatches.map((match: any) => (
           <MatchItem key={match.id} matchId={match.id} />

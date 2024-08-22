@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +51,7 @@ const SignupForm: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className="block text-gray-700 font-semibold mb-2">
-            Your Name:
+            {t("Your_Name")}:
           </label>
           <input
             type="text"
@@ -63,7 +64,7 @@ const SignupForm: React.FC = () => {
         </div>
         <div>
           <label className="block text-gray-700 font-semibold mb-2">
-            Email:
+            {t("Email")}:
           </label>
           <input
             type="email"
@@ -76,7 +77,7 @@ const SignupForm: React.FC = () => {
         </div>
         <div>
           <label className="block text-gray-700 font-semibold mb-2">
-            Password:
+            {t("Password")}:
           </label>
           <input
             type="password"
@@ -98,7 +99,7 @@ const SignupForm: React.FC = () => {
         href="/signin"
         className=" mt-6 text-black-500  hover:underline hover:text-red-400"
       >
-        Already have an account?SignIn.
+        {t("acc")}
       </a>
     </div>
   );

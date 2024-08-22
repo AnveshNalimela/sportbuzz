@@ -6,6 +6,7 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import { t } from "i18next";
 import React, { useEffect, useState } from "react";
 import SportList from "./SportList";
 import TeamList from "./TeamList";
@@ -44,7 +45,7 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
         onClick={open}
         className="rounded-md bg-gray-500 py-2 px-4 text-lg font-medium text-white focus:outline-none data-[hover]:bg-gray-600 data-[focus]:outline-1 data-[focus]:outline-white w-1/4 h-10 ml-10 overflow:hidden mr-10 w-fit"
       >
-        Preferences
+        {t("Preferences")}
       </Button>
 
       <Transition appear show={isOpen}>
@@ -72,13 +73,13 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                   <div>
                     <div className="flex justify-between items-center mb-2">
                       <p className="text-lg font-medium text-cyan-600">
-                        Based On Sports
+                        {t("Based_On_Sports")}
                       </p>
                       <Button
                         className="inline-flex items-center gap-2 rounded-md bg-gray-500 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                         onClick={close}
                       >
-                        X Close
+                        X {t("Close")}
                       </Button>
                     </div>
 
@@ -89,7 +90,7 @@ export default function Preferences({ fetchPrefernces, psports, pteams }) {
                       close={close}
                     />
                     <p className="text-lg font-medium text-cyan-600 mb-2">
-                      Based On Teams
+                      {t("Based_On_Teams")}
                     </p>
                     <TeamList
                       pteams={pteamsValue}

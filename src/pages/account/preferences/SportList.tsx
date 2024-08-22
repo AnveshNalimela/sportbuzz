@@ -2,6 +2,7 @@ import { Button } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
 import { API_ENDPOINT } from "../../../config/constants";
 import { useSportsState } from "../../../context/sports/context";
+import { t } from "i18next";
 
 const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
   const state = useSportsState();
@@ -81,7 +82,7 @@ const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
         className=" w-full mt-2 text-center  rounded-md bg-blue-400 py-2 px-3 text-lg/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-blue-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
         onClick={SPreferences}
       >
-        Update Sports
+        {t('Update_Sports')}
       </Button>
     </div>
   );

@@ -5,6 +5,7 @@ import football from "../../../assets/images/football.png";
 import live from "../../../assets/images/live.png";
 import reload from "../../../assets/images/reload.png";
 import { API_ENDPOINT } from "../../../config/constants";
+import { t } from "i18next";
 
 interface MatchItemProps {
   matchId: number;
@@ -64,7 +65,7 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
   };
 
   if (!match) {
-    return <div>Loading...</div>;
+    return <div>{t('load')}</div>;
   }
 
   return (

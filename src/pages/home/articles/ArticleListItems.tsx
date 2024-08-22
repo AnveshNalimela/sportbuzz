@@ -1,11 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
 
 export default function ArticleListItems({ selected }) {
   const state = useArticlesState();
   const { articles, isLoading, isError, errorMessage } = state;
-
+  const { t } = useTranslation();
   let articlesList = articles;
   if (selected) {
     articlesList = articles.filter(
@@ -15,12 +16,12 @@ export default function ArticleListItems({ selected }) {
 
   // Check if articles are undefined or null
   if (articles === undefined || articles === null) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for loading state
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for error state
@@ -65,7 +66,7 @@ export default function ArticleListItems({ selected }) {
                 className="mt-auto"
               >
                 <button className="bg-slate-500 hover:bg-slate-700 text-white p-2 rounded-lg w-full">
-                  Read more
+                  {t("Read_more")}
                 </button>
               </Link>
             </div>

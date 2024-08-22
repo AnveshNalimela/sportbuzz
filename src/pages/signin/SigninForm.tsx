@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINT } from "../../config/constants";
 import { withHandleSubmit } from "../../decorators/handleSubmit";
@@ -12,6 +13,8 @@ interface Inputs {
 
 const SigninForm: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [msg, setMsg] = useState("");
   const {
     register,
@@ -41,7 +44,7 @@ const SigninForm: React.FC = () => {
       navigate("/account");
     } catch (error) {
       console.error("Sign-in failed:", error);
-      setMsg("Sign-in failed: Invalid username or password");
+      setMsg(t("error"));
     }
   };
 
@@ -51,7 +54,9 @@ const SigninForm: React.FC = () => {
         {msg}
       </div>
       <div>
-        <label className="block text-gray-700 font-semibold mb-2">Email:</label>
+        <label className="block text-gray-700 font-semibold mb-2">
+          {t("Email")}:
+        </label>
         <input
           type="email"
           id="email"
@@ -63,7 +68,7 @@ const SigninForm: React.FC = () => {
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
-          Password:
+          {t("Password")}:
         </label>
         <input
           type="password"
@@ -84,7 +89,7 @@ const SigninForm: React.FC = () => {
         href="/signup"
         className=" mt-6 text-black-500  hover:underline hover:text-red-400"
       >
-        Don't have an account? Create an account.
+        {t("msg")}
       </a>
     </form>
   );

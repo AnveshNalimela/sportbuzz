@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useArticlesState } from "../../../context/articles/context";
@@ -43,12 +44,12 @@ const PreferredArticleItem = ({ sports, teams, selected }) => {
 
   // Check if matches is undefined or null
   if (articles === undefined || articles === null) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for loading state
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <span>{t("load")}</span>;
   }
 
   // Check for error state
@@ -58,7 +59,7 @@ const PreferredArticleItem = ({ sports, teams, selected }) => {
   if (recentArticles.length === 0) {
     return (
       <h2 className="text-red-500 text-center font-semibold py-10">
-        No Articles On your Prefernces Based
+        {t("NoArticles")}
       </h2>
     );
   }
@@ -97,7 +98,7 @@ const PreferredArticleItem = ({ sports, teams, selected }) => {
               className="mt-auto"
             >
               <button className="bg-slate-500 hover:bg-slate-700 text-white p-2 rounded-lg w-full">
-                Read more
+                {t("Read_more")}
               </button>
             </Link>
           </div>
