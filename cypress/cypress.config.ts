@@ -10,4 +10,5 @@ export default defineConfig({
   env: {
     API_ENDPOINT: process.env.VITE_API_ENDPOINT,
   },
+  chromeWebSecurity: false,
 });
