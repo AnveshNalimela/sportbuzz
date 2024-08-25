@@ -6,6 +6,7 @@ const LanguageSelector: React.FC = () => {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    location.reload();
   };
 
   return (

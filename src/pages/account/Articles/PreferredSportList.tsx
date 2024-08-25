@@ -2,7 +2,6 @@ import { Tab } from "@headlessui/react";
 import React from "react";
 
 const PreferredSportList = ({ sports }) => {
-  console.log(sports);
   return (
     <div>
       {sports.map((sport) => (

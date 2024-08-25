@@ -46,23 +46,13 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
   };
   const handleRefreshScores = () => {
     fetchMatchById(matchId);
-    console.log("match is refreshed"); // Fetch match details again to refresh scores
+    console.log("match deatils are  refreshed"); // Fetch match details again to refresh scores
   };
 
   useEffect(() => {
     fetchMatchById(matchId);
   }, [matchId]);
   // Get the teams and their scores from the match object
-  const findWinner = () => {
-    const teams = Object.keys(match.score);
-    const scores = Object.values(match.score).map(Number);
-
-    // Find the index of the team with the highest score
-    const highestScoreIndex = scores.indexOf(Math.max(...scores));
-
-    // Determine the winner
-    const winner = teams[highestScoreIndex];
-  };
 
   if (!match) {
     return <div>Loading...</div>;

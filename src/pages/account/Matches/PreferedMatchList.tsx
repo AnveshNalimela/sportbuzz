@@ -58,7 +58,7 @@ export default function PreferedMatchList({ psports, pteams }) {
       });
       // Display the first five matches from the filtered array
       const recentMatches = filteredMatches.slice(0, 5);
-      console.log(recentMatches);
+
       return (
         <>
           {recentMatches.map((match: any) => (

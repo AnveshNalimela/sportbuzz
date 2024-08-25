@@ -1,8 +1,11 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Disclosure, Menu, Switch, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { Fragment, default as React, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
+import chatbot from "../../assets/images/chatbot.png";
 import Logo from "../../assets/images/logo.png";
+import { GEMINI_API_KEY } from "../../config/constants";
 import { ThemeContext } from "../../context/theme";
 import LanguageSelector from "../LanguageSelector";
 
@@ -18,6 +21,10 @@ const Appbar = () => {
   const { pathname } = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
+  const [prompt, setPrompt] = useState("");
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const toggleTheme = () => {
     let newTheme = "";
@@ -28,6 +35,21 @@ const Appbar = () => {
     }
     setEnabled(!enabled);
     setTheme(newTheme);
+  };
+  const sendPrompt = () => {
+    Ask_gemini(prompt);
+    setPrompt("");
+  };
+  const Ask_gemini = async (prompt) => {
+    console.log("Ask gemini function called", prompt);
+
+    const result = await model.generateContentStream(prompt);
+
+    // Print text as it comes in.
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      process.stdout.write(chunkText);
+    }
   };
 
   return (
@@ -42,6 +64,23 @@ const Appbar = () => {
                     <img className="h-10 w-auto" src={Logo} alt="SportBuzz" />
                     <h2 className="text-3xl font-bold ml-2">SportBuzz</h2>
                   </div>
+                </div>
+
+                <div className="flex items-center justify-center mt-6">
+                  <input
+                    id="prompt"
+                    type="text"
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                    placeholder="Enter your prompt..."
+                    className="px-4 py-2 border border-zinc-300 rounded-l-md focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+                  />
+                  <button
+                    onClick={sendPrompt}
+                    className="bg-slate-200 text-white px-4 py-2 rounded-r-md hover:bg-slate-400 focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+                  >
+                    <img src={chatbot} alt="Send" className="h-8 w-8" />
+                  </button>
                 </div>
                 <div className="hidden md:flex items-center">
                   <LanguageSelector />

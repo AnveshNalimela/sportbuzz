@@ -8,6 +8,7 @@ const ArticleDetails = () => {
 
   const GoBack = () => {
     const token = localStorage.getItem("authToken") ?? "";
+
     if (token) {
       navigate("/account");
     } else {

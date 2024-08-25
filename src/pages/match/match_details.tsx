@@ -7,7 +7,7 @@ const MatchDetails = () => {
   const state = useMatchState();
   const { match, isLoading, isError, errorMessage } = state;
   const navigate = useNavigate();
-  console.log(match);
+
   const goBack = () => {
     const token = localStorage.getItem("authToken") ?? "";
     if (token) {
@@ -70,7 +70,7 @@ const MatchDetails = () => {
             <span className="font-bold text-green-700">{t("Venue")}:</span>{" "}
             {match.location}
           </p>
-          <p>
+          <div>
             <span className="font-bold text-2xl text-green-700">
               {t("Teams")}:
             </span>
@@ -81,7 +81,7 @@ const MatchDetails = () => {
                 </li>
               ))}
             </ul>
-          </p>
+          </div>
 
           <p className="font-semibold text-xl text-green-700 ">{t("Story")}:</p>
           <p>{match.story}</p>

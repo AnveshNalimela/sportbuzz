@@ -1,14 +1,12 @@
 import { Button } from "@headlessui/react";
+import { t } from "i18next";
 import React, { useEffect, useState } from "react";
 import { API_ENDPOINT } from "../../../config/constants";
 import { useSportsState } from "../../../context/sports/context";
-import { t } from "i18next";
 
 const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
   const state = useSportsState();
   const { sports } = state;
-
-  console.log(psports, pteams);
 
   const [checkedSports, setCheckedSports] = useState([]);
 
@@ -42,18 +40,16 @@ const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
       }
 
       const data = await response.json();
-
       console.log("succesfully updated the sports prefernces");
+
       fetchPrefernces();
       close(); // Success message
     } catch (error) {
       console.log("Error updating preferences:", error);
     }
   };
-  console.log(sports);
 
   const SPreferences = () => {
-    console.log("update preferences");
     const updatedSports = checkedSports.reduce((acc, curr) => {
       acc[curr] = true;
       return acc;
@@ -82,7 +78,7 @@ const SportList = ({ psports, pteams, fetchPrefernces, close }) => {
         className=" w-full mt-2 text-center  rounded-md bg-blue-400 py-2 px-3 text-lg/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-blue-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
         onClick={SPreferences}
       >
-        {t('Update_Sports')}
+        {t("Update_Sports")}
       </Button>
     </div>
   );

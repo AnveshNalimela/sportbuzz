@@ -1,5 +1,4 @@
 import React, { Suspense, useContext } from "react";
-import { useTranslation } from "react-i18next";
 import { RouterProvider } from "react-router-dom";
 import { ArticlesProvider } from "./context/articles/context";
 import { MatchesProvider } from "./context/matches/context";
@@ -11,7 +10,7 @@ import router from "./routes";
 
 function App() {
   const { theme } = useContext(ThemeContext);
-  
+
   return (
     <div
       className={`h-full w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}

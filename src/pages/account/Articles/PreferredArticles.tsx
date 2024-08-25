@@ -13,7 +13,6 @@ const PreferredArticles = ({ sports, teams }) => {
   //Feedback:Intially teams state not defined later added to access the teams list to filter
   const teamState = useTeamsState();
 
-  console.log(sports, teams);
   const [isOpen, setIsOpen] = useState(false);
   //Selected sport was replaced by selected
   //const [selectedSport, setSelectedSport] = useState(null);

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Integration</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Gemini API Integration</h1>
+        <form id="geminiForm">
+            <input type="text" id="prompt" placeholder="Enter your prompt..." required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response" class="response"></div>
+    </div>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // Fetch your API_KEY
+        const API_KEY = "AIzaSyDlBXlcz2-b9p-vFRzGbFxzmmKZ4-EwiuM";
+
+        // Access your API key (see "Set up your API key" above)
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        document.getElementById('geminiForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const prompt = document.getElementById('prompt').value;
+            const responseDiv = document.getElementById('response');
+
+            try {
+                const result = await model.generateContent(prompt)
+
+                const response = await result.response;
+                const text = response.text();
+                responseDiv.innerHTML = `<strong>Response:</strong> ${text}`; // Adjust according to the API's response structure
+            } catch (error) {
+                responseDiv.innerHTML = `<strong>Error:</strong> Unable to fetch response from the API.`;
+                console.error('Error:', error);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

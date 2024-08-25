@@ -4,8 +4,11 @@ import ErrorBoundary from "../../components/ErrorBoundary";
 const ArticlesList = React.lazy(() => import("./articles/ArticlesList"));
 const MatchList = React.lazy(() => import("./matches/MatchList"));
 
+// Fetch your API_KEY
+
 const Home = () => {
   const { t } = useTranslation();
+
   return (
     <>
       <div className="flex justify-between text-center text-md-left px-5">
@@ -14,7 +17,9 @@ const Home = () => {
         </h2>
       </div>
       <ErrorBoundary>
-        <Suspense fallback={<div className="suspense-loading">{t('load')}</div>}>
+        <Suspense
+          fallback={<div className="suspense-loading">{t("load")}</div>}
+        >
           <MatchList />
         </Suspense>
       </ErrorBoundary>
@@ -27,7 +32,7 @@ const Home = () => {
       <div className="flex">
         <ErrorBoundary>
           <Suspense
-            fallback={<div className="suspense-loading">{t('load')}</div>}
+            fallback={<div className="suspense-loading">{t("load")}</div>}
           >
             <ArticlesList />
           </Suspense>

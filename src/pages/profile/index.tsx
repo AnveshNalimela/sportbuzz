@@ -47,7 +47,6 @@ const Profile = () => {
       setSports(preferences.sports);
       setTeams(preferences.teams);
       console.log(preferences, "are succesfully retrieved");
-      console.log(sports, teams);
     } catch (error) {
       console.log("Error fetching preferences:", error);
     }

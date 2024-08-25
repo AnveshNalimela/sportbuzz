@@ -49,7 +49,6 @@ const TeamList = ({ pteams, psports, fetchPrefernces, close }) => {
   };
 
   const TPreferences = () => {
-    console.log("update preferences");
     const updatedTeams = checkedTeams.reduce((acc, curr) => {
       acc[curr] = true;
       return acc;
