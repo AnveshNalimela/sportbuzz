@@ -29,7 +29,7 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 
 # copy env varibales
-COPY .env .
+
 
 # Expose the port that `serve` will use
 EXPOSE ${PORT:-5000}
