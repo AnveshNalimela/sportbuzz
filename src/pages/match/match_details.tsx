@@ -1,10 +1,17 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { t } from "i18next";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GEMINI_API_KEY } from "../../config/constants";
 import { useMatchState } from "../../context/match/context";
+// Initialize the Gemini AI client
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const MatchDetails = () => {
   const state = useMatchState();
+  const [status, setStatus] = useState("Summarize using AI");
+  const [summary, setSummary] = useState(""); // State to hold the summarized article
   const { match, isLoading, isError, errorMessage } = state;
   const navigate = useNavigate();
 
@@ -15,6 +22,30 @@ const MatchDetails = () => {
       navigate("/account");
     } else {
       navigate("/");
+    }
+  };
+  // Function to summarize the article using AI
+  const summarizeAI = async () => {
+    setStatus("AI is summarizing the article for you...");
+
+    try {
+      const summarizationPrompt = `Summarize the following article in under 200 words: ${JSON.stringify(
+        match.story
+      )}`;
+
+      const result = await model.generateContentStream(summarizationPrompt);
+
+      let newSummary = "";
+      for await (const chunk of result.stream) {
+        const chunkText = await chunk.text(); // Corrected to await chunk.text()
+        newSummary += chunkText;
+        setSummary(newSummary.trim()); // Update summary state
+      }
+
+      setStatus("Summarized successfully!"); // Update status after completion
+    } catch (error) {
+      console.error("Error summarizing the article:", error);
+      setStatus("Error summarizing the article");
     }
   };
   return (
@@ -92,6 +123,13 @@ const MatchDetails = () => {
           className="text-xl bg-green-300 hover:bg-green-500 px-4 py-1 text-center w-full h-10 rounded mx-2 mt-2 "
         >
           {t("Go_Home")}
+        </button>
+        <p className="w-full text-lg text-center my-2 px-4">{summary}</p>
+        <button
+          onClick={summarizeAI}
+          className="text-lg bg-green-300 hover:bg-green-500 px-4 py-1 text-center w-full h-10 rounded mx-1 mt-3"
+        >
+          {status}
         </button>
       </div>
     </div>

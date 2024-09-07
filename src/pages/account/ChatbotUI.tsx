@@ -3,32 +3,39 @@ import React, { useState } from "react";
 import chatbot from "../../assets/images/chatbot.png";
 import { GEMINI_API_KEY } from "../../config/constants";
 
+// Initialize the Gemini AI client
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
 const ChatbotUI = () => {
-  const [prompt, setPrompt] = useState("Tell me more about Sports.");
+  const [prompt, setPrompt] = useState("Tell me more about sports.");
   const [response, setResponse] = useState("AI is thinking...");
-  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const sendPrompt = () => {
-    Ask_gemini(prompt);
+    AskGemini(prompt);
   };
 
-  const Ask_gemini = async (prompt) => {
+  const AskGemini = async (prompt) => {
     console.log("Ask Gemini function called", prompt);
 
     // Reset response to show loading message
     setResponse("AI is thinking...");
 
     try {
-      // Stream the AI response
-      const result = await model.generateContentStream(prompt);
+      // Prepare query with user preferences
 
-      // Update response line by line as data is received
+      // Stream the AI response
+      const updatedprompt = `Imagine you are an assistant for a sports news and articles dashboard application. 
+      Your job is to provide concise  information about the sports, 
+      relevant summary or key points in 50 words or less based on.${prompt}`;
+      const result = await model.generateContentStream(updatedprompt);
+
       let newResponse = ""; // Temporary variable to accumulate response
       for await (const chunk of result.stream) {
         const chunkText = chunk.text();
         newResponse += chunkText; // Append new text
-        setResponse(newResponse.slice(0, 300).trim()); // Update the state with the current response
+        setResponse(newResponse.trim());
+        setPrompt(""); // Clear the prompt after sending
       }
     } catch (error) {
       console.error("Error fetching response from AI:", error);
@@ -64,7 +71,9 @@ const ChatbotUI = () => {
           type="text"
           placeholder="Type your message..."
           className="flex-grow p-2 mr-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
+          onKeyPress={(e) => e.key === "Enter" && sendPrompt()}
         />
         <button
           onClick={sendPrompt}
