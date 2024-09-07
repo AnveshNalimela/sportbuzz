@@ -20,11 +20,5 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": [
-    "src",
-    "vite-env.d.ts",
-    "jest.setup.ts",
-    "custom.d.ts",
-    "cypress/**/*.ts"
-  ]
+  "include": ["src", "vite-env.d.ts", "custom.d.ts", "cypress/**/*.ts"]
 }

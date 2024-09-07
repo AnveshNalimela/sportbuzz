@@ -33,3 +33,4 @@ dist-ssr
 .env.sentry-build-plugin
 .env
 
+docker.txt

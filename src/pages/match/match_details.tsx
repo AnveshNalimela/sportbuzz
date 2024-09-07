@@ -10,6 +10,7 @@ const MatchDetails = () => {
 
   const goBack = () => {
     const token = localStorage.getItem("authToken") ?? "";
+    // throw new Error("You caused an error");
     if (token) {
       navigate("/account");
     } else {

@@ -57,7 +57,7 @@ export default function PreferedMatchList({ psports, pteams }) {
         return sportExists || teamExists1 || teamExists2;
       });
       // Display the first five matches from the filtered array
-      const recentMatches = filteredMatches.slice(0, 5);
+      const recentMatches = filteredMatches.slice(0, 6);
 
       return (
         <>
@@ -68,7 +68,7 @@ export default function PreferedMatchList({ psports, pteams }) {
       );
     }
   } else {
-    const recentMatches = sortedMatches.slice(0, 4);
+    const recentMatches = sortedMatches.slice(0, 5);
     return (
       <>
         <h2 className="text-red-500 text-center font-semibold py-10">

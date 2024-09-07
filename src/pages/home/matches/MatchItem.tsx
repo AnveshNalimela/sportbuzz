@@ -48,7 +48,7 @@ const MatchItem: React.FC<MatchItemProps> = ({ matchId }) => {
     fetchMatchById(matchId);
     console.log("match deatils are  refreshed"); // Fetch match details again to refresh scores
   };
-
+  // debugger;
   useEffect(() => {
     fetchMatchById(matchId);
   }, [matchId]);

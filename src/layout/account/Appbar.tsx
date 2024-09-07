@@ -3,7 +3,6 @@ import { Disclosure, Menu, Switch, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { Fragment, default as React, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import chatbot from "../../assets/images/chatbot.png";
 import Logo from "../../assets/images/logo.png";
 import { GEMINI_API_KEY } from "../../config/constants";
 import { ThemeContext } from "../../context/theme";
@@ -36,28 +35,13 @@ const Appbar = () => {
     setEnabled(!enabled);
     setTheme(newTheme);
   };
-  const sendPrompt = () => {
-    Ask_gemini(prompt);
-    setPrompt("");
-  };
-  const Ask_gemini = async (prompt) => {
-    console.log("Ask gemini function called", prompt);
-
-    const result = await model.generateContentStream(prompt);
-
-    // Print text as it comes in.
-    for await (const chunk of result.stream) {
-      const chunkText = chunk.text();
-      process.stdout.write(chunkText);
-    }
-  };
 
   return (
     <>
       <Disclosure as="nav" className="py-4 border-b border-slate-200">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-10">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 flex items-center">
@@ -66,7 +50,7 @@ const Appbar = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center mt-6">
+                {/* <div className="flex items-center justify-center mt-6">
                   <input
                     id="prompt"
                     type="text"
@@ -81,7 +65,7 @@ const Appbar = () => {
                   >
                     <img src={chatbot} alt="Send" className="h-8 w-8" />
                   </button>
-                </div>
+                </div> */}
                 <div className="hidden md:flex items-center">
                   <LanguageSelector />
                   <Switch

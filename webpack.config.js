@@ -1,10 +1,10 @@
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
-// Get __dirname equivalent in ES Modules
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 export default {
     entry: './src/main.tsx',
     output: {
@@ -12,44 +12,43 @@ export default {
         filename: 'bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
+                use: 'babel-loader',
             },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.html$/,
+                use: 'html-loader',
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name].[hash].[ext]',
-                            outputPath: 'images', // Specifies the directory for images
+                            name: '[name].[hash:8].[ext]',
+                            outputPath: 'assets/images/',
+                            publicPath: 'assets/images/',
                         },
-                    }]
-            }
-
+                    },
+                ],
+            },
         ],
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }),
-    ],
     devServer: {
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.join(__dirname, 'dist'),
         },
         compress: true,
-        port: 3000,
+        port: 8080,
     },
 };

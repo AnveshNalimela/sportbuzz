@@ -23,7 +23,6 @@ const Home = () => {
           <MatchList />
         </Suspense>
       </ErrorBoundary>
-
       <div className="flex justify-between text-center text-md-left px-5">
         <h2 className=" text-2xl font-bold tracking-tight text-slate-700">
           {t("Trending_Articles")}

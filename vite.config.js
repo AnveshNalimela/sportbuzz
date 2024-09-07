@@ -47,13 +47,8 @@ export default defineConfig({
   }), sentryVitePlugin({
     org: "cbit-u7",
     project: "javascript-react"
-  }), sentryVitePlugin({
-    org: "cbit-u7",
-    project: "javascript-react"
-  }), sentryVitePlugin({
-    org: "cbit-u7",
-    project: "javascript-react"
-  })],
+  })
+  ],
 
   esbuild: {
     target: 'esnext', // or 'esnext', 'es2022', etc.
